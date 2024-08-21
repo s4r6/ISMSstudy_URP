@@ -1,0 +1,22 @@
+{
+    "name": "Domain.UseCase.Matching",
+    "rootNamespace": "ISMS.Domain.UseCase.Matching",
+    "references": [
+        "GUID:aa6901609384e8a479800cfc272ac29e",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:762c40b6d7f4b734e84c4cf0551cac79",
+        "GUID:40122c3a07eda76449087d58eb97aaee",
+        "GUID:6450df465e186134ab11ac6357f1494c",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:96da9c746ebf3e8458e986c26112acad"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

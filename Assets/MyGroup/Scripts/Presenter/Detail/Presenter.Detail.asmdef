@@ -1,0 +1,23 @@
+{
+    "name": "Presenter.Detail",
+    "rootNamespace": "ISMS.Presenter.Detail",
+    "references": [
+        "GUID:aa6901609384e8a479800cfc272ac29e",
+        "GUID:9e5531b91bb71ea4e9bdf8cebc025b5c",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:e3fc303917e49514ea1c1c383f02f940",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

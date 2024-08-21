@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26221682149a60446a13cadeb3cad063, type: 3}
+  m_Name: BookCaseSet01
+  m_EditorClassIdentifier: 
+  ObjectName: "\u6587\u66F8\u5EAB\uFF11"
+  Describe: "\u9375\u306B\u3088\u308B\u65BD\u9320\u7BA1\u7406\u304C\u53EF\u80FD\u3067\u3042\u308B\u304C\u3001\u5728\u5BA4\u6642\u306F\u958B\u653E\u3055\u308C\u3066\u3044\u308B\u3002\u80CC\u8868\u7D19\u306E\u8272\u306A\u3069\u3067\u5206\u985E\u3055\u308C\u3001\u53D6\u308A\u6271\u3044\u65B9\u6CD5\u304C\u6C7A\u307E\u3063\u3066\u3044\u308B\u3068\u306E\u3053\u3068\u3002,\u7279\u306B\u554F\u984C\u306F\u306A\u3044\u3088\u3046\u3060\u2026\u3002\u5728\u5BA4\u6642\u306B\u306F\u4EBA\u306B\u3088\u308B\u76E3\u8996\u304C\u3042\u308B\u305F\u3081\u76D7\u96E3\u7B49\u306E\u30EA\u30B9\u30AF\u306F\u4F4E\u3044\u3068\u5224\u65AD\u3055\u308C\u308B\u3002"
+  RiskFlag: 0

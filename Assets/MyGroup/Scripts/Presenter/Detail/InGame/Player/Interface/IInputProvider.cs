@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UniRx;
+
+namespace ISMS.Presenter.Detail.Player
+{
+    public interface IInputProvider
+    {
+        IReadOnlyReactiveProperty<Vector2> MoveDirection { get; }
+        IReadOnlyReactiveProperty<Vector2> LookDirection { get; }
+        //IReadOnlyReactiveProperty<>
+    }
+}

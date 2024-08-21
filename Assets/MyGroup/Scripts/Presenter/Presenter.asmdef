@@ -1,0 +1,18 @@
+{
+    "name": "Presenter",
+    "rootNamespace": "ISMS.Presenter",
+    "references": [
+        "GUID:aa6901609384e8a479800cfc272ac29e",
+        "GUID:6450df465e186134ab11ac6357f1494c",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

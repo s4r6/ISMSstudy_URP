@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26221682149a60446a13cadeb3cad063, type: 3}
+  m_Name: LockCabine
+  m_EditorClassIdentifier: 
+  ObjectName: "\u4FDD\u7BA1\u5EAB"
+  Describe: "\u5404\u6BB5\u3092\u9375\u306B\u3088\u308A\u65BD\u9320\u3057\u3066\u7BA1\u7406\u53EF\u80FD\u3002\u4E3B\u306B\u91CD\u8981\u306A\u8CC7\u7523\u3092\u4FDD\u7BA1\u3059\u308B\u306E\u306B\u4F7F\u308F\u308C\u3066\u3044\u308B,\u7279\u306B\u554F\u984C\u306F\u306A\u3044\u3088\u3046\u3060\u2026\u3002\u5728\u5BA4\u6642\u306B\u306F\u4EBA\u306B\u3088\u308B\u76E3\u8996\u304C\u3042\u308A\u3001\u307E\u305F\u3001\u9375\u306B\u3088\u308B\u7BA1\u7406\u304C\u3042\u308B\u305F\u3081\u76D7\u96E3\u7B49\u306E\u30EA\u30B9\u30AF\u306F\u4F4E\u3044\u3068\u5224\u65AD\u3055\u308C\u308B\u3002"
+  RiskFlag: 0
