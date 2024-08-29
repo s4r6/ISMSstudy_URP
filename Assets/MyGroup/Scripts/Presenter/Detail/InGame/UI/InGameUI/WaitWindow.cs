@@ -9,50 +9,59 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using Zenject;
+using ISMS.Presenter.Detail.Player;
 
 namespace ISMS.Presenter.Detail.UI
 {
     public class WaitWindow : MonoBehaviour
     {
         [SerializeField]
+        GameObject _player;
+        PlayerCore _playerState;
+        IInputProvider _input;
+
+
+        [SerializeField]
         Text BlinkText;
         [SerializeField]
         Text CutInText;
 
         [SerializeField]
-        private float BlinkInterval;    //点滅時間
+        float BlinkInterval;    //点滅時間
         [SerializeField]
-        private float CutInOutTime; 
+        float CutInOutTime; 
         [SerializeField]
-        private int CutInWaitTime;
+        int CutInWaitTime;
 
-
-        private void Start()
+        
+        void Start()
         {
-            /*_player.CurrentPlayerState
-                .Where(state => state == PlayerState.Wait)
-                .Subscribe(state =>
+            _playerState = _player.GetComponent<PlayerCore>();
+            _input = _player.GetComponent<PlayerInputData>();
+
+            _playerState.CurrentPlayerState
+                .Where(x => x == PlayerState.Wait)
+                .Subscribe(x =>
                 {
                     this.gameObject.SetActive(true);
-                })
-                .AddTo(this);
+                }).AddTo(this);
 
-            _input.AnyButtonPressed
+            _input.AnyButtonPush
                 .Where(x => x == true)
                 .Subscribe(_ =>
                 {
                     OnExitWaitState();
-                }).AddTo(this);*/
+                }).AddTo(this);
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
             BlinkText.DOFade(0.0f, BlinkInterval)   //点滅
                 .SetLoops(-1, LoopType.Yoyo);
         }
 
         //カットインの再生
-        private async UniTask PlayCutIn()
+        async UniTask PlayCutIn()
         {
             var CutInTextObj = CutInText.GetComponent<RectTransform>();
             var StartPos = CutInTextObj.localPosition;
@@ -70,11 +79,11 @@ namespace ISMS.Presenter.Detail.UI
         }
 
         //何かのキーが押された時の処理
-        private async void OnExitWaitState()
+        async void OnExitWaitState()
         {
             BlinkText.gameObject.SetActive(false);
             await PlayCutIn();
-            //ChangePlayerState(PlayerState.Explore); //Exploreステートへ変更
+            _playerState.ChangeCurrentPlayerState(PlayerState.Explore); //Exploreステートへ変更
             this.gameObject.SetActive(false);   //非表示
         }
 

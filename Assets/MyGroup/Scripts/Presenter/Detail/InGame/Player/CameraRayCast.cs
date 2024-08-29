@@ -11,8 +11,8 @@ namespace ISMS.Presenter.Detail.Player
     {
         RaycastHit hit;     // Rayを飛ばして当たったオブジェクトの情報を格納する変数
         //Vector3 rayOrigin, rayDir;
-        private float rayRange = 60;
-        private float rayRadius = 2;
+        float rayRange = 60;
+        float rayRadius = 2;
 
         [SerializeField]
         PlayerCore _player;
@@ -20,9 +20,9 @@ namespace ISMS.Presenter.Detail.Player
         [SerializeField]
         GameObject SurveyIcon;
 
-        SurveyObject PreHitObj;
+        public BaseSurveyObject PreHitObj { get; private set; }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
             if (_player.CurrentPlayerState.Value != PlayerState.Explore) return;
             RayHitProcess();
@@ -38,15 +38,15 @@ namespace ISMS.Presenter.Detail.Player
             //Rayの先にオブジェクトが有れば
             if (!isHit) return;
 
-            var SurveyObj = hit.collider.gameObject.GetComponent<SurveyObject>();
+            var SurveyObj = hit.collider.gameObject.GetComponent<BaseSurveyObject>();
             if (SurveyObj != null)
             {
-                //SurveyObj.DisPlaySurveyIcon();
                 PreHitObj = SurveyObj;
                 Debug.Log("HitSurvey");
             }
             else
             {
+
                 SurveyIcon.SetActive(false);
                 Debug.Log("NoHit");
             }

@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using AOT;
 using ISMS.Connecter;
 using UniRx;
-using ISMS.Data.State;
 namespace ISMS.Connecter.Detail
 {
     public class WebSocket :IWebSocket
@@ -38,7 +37,6 @@ namespace ISMS.Connecter.Detail
 
         WebSocket myInstance;
 
-        public ReactiveProperty<readyState> MyState { get; set; }
 
         public WebSocket()
         {

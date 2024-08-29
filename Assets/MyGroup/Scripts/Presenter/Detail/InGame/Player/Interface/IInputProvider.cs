@@ -9,6 +9,7 @@ namespace ISMS.Presenter.Detail.Player
     {
         IReadOnlyReactiveProperty<Vector2> MoveDirection { get; }
         IReadOnlyReactiveProperty<Vector2> LookDirection { get; }
-        //IReadOnlyReactiveProperty<>
+        IReadOnlyReactiveProperty<bool> AnyButtonPush { get; }
+        IReadOnlyReactiveProperty<bool> InspectButtonPush { get; }
     }
 }

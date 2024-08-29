@@ -107,7 +107,7 @@ namespace ISMS.Presenter.Detail
                     ""id"": ""fe0fb481-366c-4b8c-bab9-1c9ed40ba9a4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {
