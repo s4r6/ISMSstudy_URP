@@ -8,7 +8,8 @@ namespace ISMS.Presenter.Detail.Stage
 {
     public interface IRepository
     {
-        
+
+        UniTask GetStageData();
         UniTask<ObjectDictionary> GetObjectData(int StageNum);
     }
 }

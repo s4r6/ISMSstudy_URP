@@ -4,11 +4,12 @@ using ISMS.Presenter.Detail.Stage;
 
 public class RepositoryInstaller : MonoInstaller
 {
+    CSVReader _repository = new CSVReader();
     public override void InstallBindings()
     {
         Container
             .Bind<IRepository>()
-            .FromInstance(new CSVReader())
+            .FromInstance(_repository)
             .AsCached();
     }
 }

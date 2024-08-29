@@ -20,12 +20,9 @@ namespace ISMS.Presenter.Detail.Stage
             _objDictionary = new ObjectDictionary();
         }
 
-        public async 
-
-        async UniTask GetWebStageData()
+        public async UniTask GetStageData()
         {
             await DownloadStageNameList(Application.streamingAssetsPath + FolderName + stageNameFilePath);  //ステージの名前の一覧を取得
-            
         }
 
         //StageDataFilesにステージデータの名前の一覧をセット

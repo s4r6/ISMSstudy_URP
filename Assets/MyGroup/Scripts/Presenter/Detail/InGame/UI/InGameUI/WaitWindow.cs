@@ -47,6 +47,7 @@ namespace ISMS.Presenter.Detail.UI
                 }).AddTo(this);
 
             _input.AnyButtonPush
+                .Where(_ => _playerState.CurrentPlayerState.Value == PlayerState.Wait)
                 .Where(x => x == true)
                 .Subscribe(_ =>
                 {

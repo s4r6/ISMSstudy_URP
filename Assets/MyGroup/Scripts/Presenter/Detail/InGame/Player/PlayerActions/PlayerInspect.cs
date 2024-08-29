@@ -29,7 +29,8 @@ namespace ISMS.Presenter.Detail.Player
             _input = _player.GetComponent<IInputProvider>();
 
             _input.InspectButtonPush
-                .Where(x => x == true && _playerState.CurrentPlayerState.Value == PlayerState.Explore)
+                .Where(_ => _playerState.CurrentPlayerState.Value == PlayerState.Explore)
+                .Where(x => x == true)
                 .Subscribe(_ =>
                 {
                     _playerState.ChangeCurrentPlayerState(PlayerState.DetailInfo);

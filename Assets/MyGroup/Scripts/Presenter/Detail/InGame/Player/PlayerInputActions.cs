@@ -53,7 +53,7 @@ namespace ISMS.Presenter.Detail
                     ""id"": ""36114d24-7e4f-4e13-b20f-687382a69854"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -62,7 +62,7 @@ namespace ISMS.Presenter.Detail
                     ""id"": ""062edd19-1f4c-480a-8047-f20d16998dac"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -107,7 +107,7 @@ namespace ISMS.Presenter.Detail
                     ""id"": ""fe0fb481-366c-4b8c-bab9-1c9ed40ba9a4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {

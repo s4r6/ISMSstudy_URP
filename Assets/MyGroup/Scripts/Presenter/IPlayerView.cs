@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlayerView : CleanArchtecture.IView
 {
-
+    void PlayerInitialize();
 }

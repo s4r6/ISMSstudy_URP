@@ -40,6 +40,12 @@ namespace ISMS.Presenter.Detail.UI
                     DisplayWindow();
                 }).AddTo(this);
 
+            _input.BackButtonPush
+                .Where(x => x == true)
+                .Subscribe(_ =>
+                {
+                    ExitDetailDataWindow();
+                }).AddTo(this);
 
             this.gameObject.SetActive(false);
         }
@@ -58,6 +64,12 @@ namespace ISMS.Presenter.Detail.UI
 
             _window.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)
                 .SetEase(Ease.OutCubic);
+        }
+
+        void ExitDetailDataWindow()
+        {
+            gameObject.SetActive(false);
+            _playerState.ChangeCurrentPlayerState(PlayerState.Explore);
         }
     }
 }
