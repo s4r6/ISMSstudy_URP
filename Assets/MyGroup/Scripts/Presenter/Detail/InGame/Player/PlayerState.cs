@@ -6,6 +6,7 @@ namespace ISMS.Presenter.Detail
 {
     public enum PlayerState
     {
+        Loading,
         Wait,
         Explore,
         DetailInfo,

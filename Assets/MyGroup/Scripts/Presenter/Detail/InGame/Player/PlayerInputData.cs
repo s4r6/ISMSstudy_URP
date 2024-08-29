@@ -11,9 +11,12 @@ namespace ISMS.Presenter.Detail.Player
         ReactiveProperty<Vector2> _move = new ReactiveProperty<Vector2>();
      
         ReactiveProperty<Vector2> _look = new ReactiveProperty<Vector2>();
+        ReactiveProperty<bool> _any = new BoolReactiveProperty();
+        ReactiveProperty<bool> _inspect = new BoolReactiveProperty();
         public IReadOnlyReactiveProperty<Vector2> MoveDirection => _move;
         public IReadOnlyReactiveProperty<Vector2> LookDirection => _look;
-
+        public IReadOnlyReactiveProperty<bool> AnyButtonPush => _any;
+        public IReadOnlyReactiveProperty<bool> InspectButtonPush => _inspect;
 
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -25,6 +28,22 @@ namespace ISMS.Presenter.Detail.Player
         {
             Debug.Log(context.ReadValue<Vector2>());
             _look.Value = context.ReadValue<Vector2>();
+        }
+
+        public void OnAny(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            if (_any.Value == true) _any.Value = false;
+
+            _any.Value = true;
+        }
+
+        public void OnInspect(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            if (_inspect.Value == true) _inspect.Value = false;
+
+            _inspect.Value = true;
         }
     }
 }

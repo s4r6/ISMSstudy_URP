@@ -14,7 +14,11 @@ namespace ISMSInGame.Domain.UseCase.Detail
 
         public void Begin()
         {
+            //ネットワーク接続
+            //ステージ初期化
 
+            //各種Bind
+            //PlayerState初期化
         }
     }
 }

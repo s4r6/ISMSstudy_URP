@@ -6,14 +6,14 @@ using UnityEngine.InputSystem;
 
 namespace ISMS.Presenter.Detail.Player
 {
-    public class PlayerCore : MonoBehaviour
+    public class PlayerCore : MonoBehaviour, IPlayerView
     {
-        ReactiveProperty<PlayerState> currentPlayerState = new ReactiveProperty<PlayerState>();
+        ReactiveProperty<PlayerState> currentPlayerState = new ReactiveProperty<PlayerState>(PlayerState.Loading);
         public IReadOnlyReactiveProperty<PlayerState> CurrentPlayerState => currentPlayerState;
 
-        private void Start()
+        public void StateInitialize()
         {
-            currentPlayerState.Value = PlayerState.Wait;
+            ChangeCurrentPlayerState(PlayerState.Wait);
         }
 
         public void ChangeCurrentPlayerState(PlayerState nextState)
