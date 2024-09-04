@@ -25,8 +25,8 @@ namespace ISMS.Presenter.Detail.Player
         Vector3 MoveDirection;
 
         public float vertiRotate = 0.0f;
-        private float MinLimit = -50.0f;    //c‰ñ“]‚Ìª•ûŒü‚Ì§ŒÀ
-        private float MaxLimit = 70.0f;     //c‰ñ“]«•ûŒü‚Ì§ŒÀ
+        float MinLimit = -50.0f;    //c‰ñ“]‚Ìª•ûŒü‚Ì§ŒÀ
+        float MaxLimit = 70.0f;     //c‰ñ“]«•ûŒü‚Ì§ŒÀ
 
         Vector2 LookDir;
 
@@ -53,10 +53,17 @@ namespace ISMS.Presenter.Detail.Player
             playerCore.CurrentPlayerState
                 .Subscribe(x =>
                 {
+                    Debug.Log("ó‘Ô•ÏX");
                     if (x == PlayerState.Explore)
+                    {
+                        Debug.Log(x);
                         isMovable = true;
+                    }
                     else
+                    {
+                        Debug.Log("ˆÚ“®‚Å‚«‚È‚¢:" + x);
                         isMovable = false;
+                    }
                 }).AddTo(this);
         }
 

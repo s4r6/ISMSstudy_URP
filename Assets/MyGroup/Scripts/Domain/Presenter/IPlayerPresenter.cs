@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlayerPresenter : CleanArchtecture.IPresenter
 {
-
+    void InGameInitialize();
 }

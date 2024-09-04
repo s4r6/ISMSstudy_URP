@@ -15,14 +15,15 @@ namespace ISMS.Presenter.Detail.Stage
         [Inject]
         IRepository _stageDataLoader;
 
-        async UniTask Initialize()
+        public async UniTask Initialize()
         {
+            await _stageDataLoader.GetStageData();  //データをダウンロード
             var parent = this.transform;
-            _objDic = await _stageDataLoader.GetObjectData(0);
+            _objDic = await _stageDataLoader.GetObjectData(0);  //ダウンロードしたデータからオブジェクトの情報を取得
             foreach (Transform child in parent)
             {
                 var _surveyObj = child.gameObject.GetComponent<BaseSurveyObject>();
-                _surveyObj._obj.Value = _objDic.GetObject(_surveyObj.name);
+                _surveyObj._obj = _objDic.GetObject(_surveyObj.name);
             }
         }
 

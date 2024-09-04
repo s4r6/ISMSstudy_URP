@@ -11,5 +11,6 @@ namespace ISMS.Presenter.Detail.Player
         IReadOnlyReactiveProperty<Vector2> LookDirection { get; }
         IReadOnlyReactiveProperty<bool> AnyButtonPush { get; }
         IReadOnlyReactiveProperty<bool> InspectButtonPush { get; }
+        IReadOnlyReactiveProperty<bool> BackButtonPush { get; }
     }
 }
