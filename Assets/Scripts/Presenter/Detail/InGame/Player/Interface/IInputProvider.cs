@@ -14,5 +14,8 @@ namespace ISMS.Presenter.Detail.Player
         IReadOnlyReactiveProperty<bool> BackButtonPush { get; }
         IReadOnlyReactiveProperty<bool> DiscoverButtonPush { get; }
         IReadOnlyReactiveProperty<bool> GimicActionButtonPush { get; }
+        IReadOnlyReactiveProperty<bool> DocumentButtonPush { get; }
+        IReadOnlyReactiveProperty<bool> RightPageButtonPush { get; }
+        IReadOnlyReactiveProperty<bool> LeftPageButtonPush { get; }
     }
 }

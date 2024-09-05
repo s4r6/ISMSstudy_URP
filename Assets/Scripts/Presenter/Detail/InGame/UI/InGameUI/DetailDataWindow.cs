@@ -8,82 +8,66 @@ using System;
 
 namespace ISMS.Presenter.Detail.UI
 {
-    public class DetailDataWindow : MonoBehaviour
+    public class DetailDataWindow : BaseUIWindow
     {
-        [SerializeField]
-        GameObject _player;
-        PlayerCore _playerState;
-        IInputProvider _input;
-        PlayerInspect _playerInspect;
-
-        [SerializeField]
-        GameObject _window;
-        [SerializeField]
-        float DisplayTime = 0.2f;
+        PlayerInspect _inspect;
 
         [SerializeField]
         TextMeshProUGUI _objNameText;
         [SerializeField]
-        TextMeshProUGUI _objDescribeText; 
+        TextMeshProUGUI _objDescribeText;
+        [SerializeField]
+        TextMeshProUGUI _riskFlagText;
 
-        void Start()
+        protected override PlayerState myState { get; set; } = PlayerState.DetailInfo;
+
+        protected override void Initialize()
         {
-            _playerState = _player.GetComponent<PlayerCore>();
-            _playerInspect = _player.GetComponent<PlayerInspect>();
-            _input = _player.GetComponent<IInputProvider>();
-
-            _playerState.CurrentPlayerState
-                .Subscribe(x =>
-                {
-                    if(x == PlayerState.DetailInfo)
-                    {
-                        SetDetailData();
-                        DisplayWindow();
-                    }
-                    else
-                    {
-                        gameObject.SetActive(false);
-                    }
-                    
-                }).AddTo(this);
-
-            _input.BackButtonPush
-                .Where(x => x == true && _playerState.CurrentPlayerState.Value == PlayerState.DetailInfo)
-                .Subscribe(_ =>
-                {
-                    ExitDetailDataWindow();
-                }).AddTo(this);
+            _inspect = _player.GetComponent<PlayerInspect>();
 
             _input.DiscoverButtonPush
-                .Where(x => x == true)
+                .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                 .Subscribe(_ =>
                 {
-                    _playerInspect.PreHitObj.Survey();
-                    _playerState.ChangeCurrentPlayerState(PlayerState.Discover);
+                    if (_inspect.PreHitObj._riskFlag == CheckFlag.NotSurvey)
+                    {
+                        _inspect.PreHitObj.Survey();
+                        _state.ChangeCurrentPlayerState(PlayerState.Discover);
+                        this.gameObject.SetActive(false);
+                    }
                 }).AddTo(this);
 
             this.gameObject.SetActive(false);
         }
 
-        void SetDetailData()
+        protected override void DisplayWindow()
         {
-            BaseSurveyObject ObjData = _playerInspect.PreHitObj;
-            _objNameText.text = ObjData._name;
-            _objDescribeText.text = ObjData._describe;
-        }
-
-        void DisplayWindow()
-        {
+            SetDetailData();
             this.gameObject.transform.localScale = Vector3.zero;
             this.gameObject.SetActive(true);
 
-            _window.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)
+            this.gameObject.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)
                 .SetEase(Ease.OutCubic);
         }
-
-        void ExitDetailDataWindow()
+        void SetDetailData()
         {
-            _playerState.ChangeCurrentPlayerState(PlayerState.Explore);
+            BaseSurveyObject ObjData = _inspect.PreHitObj;
+            _objNameText.text = ObjData._name;
+            _objDescribeText.text = ObjData._describe;
+            switch(ObjData._riskFlag)
+            {
+                case CheckFlag.NotSurvey:
+                    _riskFlagText.text = "?";
+                    break;
+
+                case CheckFlag.Denger:
+                    _riskFlagText.text = "—L";
+                    break;
+
+                case CheckFlag.Safe:
+                    _riskFlagText.text = "–³";
+                    break;
+            }
         }
     }
 }

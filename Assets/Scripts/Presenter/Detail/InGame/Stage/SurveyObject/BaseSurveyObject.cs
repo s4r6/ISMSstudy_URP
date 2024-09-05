@@ -19,7 +19,7 @@ namespace ISMS.Presenter.Detail.Stage
 
     public abstract class BaseSurveyObject : MonoBehaviour
     {
-        CheckFlag _riskFlag = CheckFlag.NotSurvey;
+        public CheckFlag _riskFlag = CheckFlag.NotSurvey;
         ReactiveProperty<bool> _correctFlag = new BoolReactiveProperty();
         public IReadOnlyReactiveProperty<bool> CorrectFlag => _correctFlag;
         public Data.Object _obj;
@@ -39,17 +39,21 @@ namespace ISMS.Presenter.Detail.Stage
 
         public void Survey()
         {
-            if (_risk == Risk.DENGER)   //危険なオブジェクトなら正解
+            if(_riskFlag == CheckFlag.NotSurvey)
             {
-                _riskFlag = CheckFlag.Denger;
-                _correctFlag.Value = true;
+                Debug.Log("Survey");
+                if (_risk == Risk.DENGER)   //危険なオブジェクトなら正解
+                {
+                    _riskFlag = CheckFlag.Denger;
+                    _correctFlag.Value = true;
+                }
+                else if (_risk == Risk.SAFE)    //安全なオブジェクトなら不正解
+                {
+                    Debug.Log("IsSafe");
+                    _riskFlag = CheckFlag.Safe;
+                    _correctFlag.SetValueAndForceNotify(false); //初期値がfalseのため、同じ値に変更された場合でもイベントを発行するようにする
+                }
             }
-            else if (_risk == Risk.SAFE)    //安全なオブジェクトなら不正解
-            {
-                _riskFlag = CheckFlag.Safe;
-                _correctFlag.Value = false;
-            }
-                
         }
     }
 }
