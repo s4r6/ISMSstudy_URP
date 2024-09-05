@@ -11,7 +11,19 @@ namespace ISMS.Presenter.Detail.Player
         public int InCorrectCount { get; private set; }
         ReactiveProperty<PlayerState> currentPlayerState = new ReactiveProperty<PlayerState>(PlayerState.Loading);
         public IReadOnlyReactiveProperty<PlayerState> CurrentPlayerState => currentPlayerState;
+        IInputProvider _input;
 
+        void Start()
+        {
+            _input = GetComponent<IInputProvider>();
+
+            _input.DocumentButtonPush
+                .Where(_ => CurrentPlayerState.Value == PlayerState.Explore)
+                .Subscribe(_ =>
+                {
+                    ChangeCurrentPlayerState(PlayerState.Document);
+                }).AddTo(this);
+        }
         public void ChangeCurrentPlayerState(PlayerState nextState)
         {
             currentPlayerState.Value = nextState;

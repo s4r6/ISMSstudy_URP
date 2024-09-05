@@ -15,6 +15,9 @@ namespace ISMS.Presenter.Detail.Player
         ReactiveProperty<bool> _back = new BoolReactiveProperty();
         ReactiveProperty<bool> _discover = new BoolReactiveProperty();
         ReactiveProperty<bool> _action = new BoolReactiveProperty();
+        ReactiveProperty<bool> _document = new BoolReactiveProperty();
+        ReactiveProperty<bool> _rightPage = new BoolReactiveProperty();
+        ReactiveProperty<bool> _leftPage = new BoolReactiveProperty();
 
         public IReadOnlyReactiveProperty<Vector2> MoveDirection => _move;
         public IReadOnlyReactiveProperty<Vector2> LookDirection => _look;
@@ -23,6 +26,9 @@ namespace ISMS.Presenter.Detail.Player
         public IReadOnlyReactiveProperty<bool> BackButtonPush => _back;
         public IReadOnlyReactiveProperty<bool> DiscoverButtonPush => _discover;
         public IReadOnlyReactiveProperty<bool> GimicActionButtonPush => _action;
+        public IReadOnlyReactiveProperty<bool> DocumentButtonPush => _document;
+        public IReadOnlyReactiveProperty<bool> RightPageButtonPush => _rightPage;
+        public IReadOnlyReactiveProperty<bool> LeftPageButtonPush => _leftPage;
 
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -87,6 +93,41 @@ namespace ISMS.Presenter.Detail.Player
                 return;
             }
             _action.Value = true;
+        }
+
+        public void OnDocument(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            if (_document.Value == true)
+            {
+                _document.Value = false;
+                return;
+            }
+            _document.Value = true;
+        }
+
+        public void OnRightPage(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _rightPage.SetValueAndForceNotify(true);
+            }
+            if(context.canceled)
+            {
+                _rightPage.Value = false;
+            }
+        }
+
+        public void OnLeftPage(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _leftPage.SetValueAndForceNotify(true);
+            }
+            if (context.canceled)
+            {
+                _leftPage.Value = false;
+            }
         }
     }
 }

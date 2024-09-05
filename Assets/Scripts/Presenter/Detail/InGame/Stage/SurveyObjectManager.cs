@@ -32,6 +32,7 @@ namespace ISMS.Presenter.Detail.Stage
                 var _surveyObj = child.gameObject.GetComponent<BaseSurveyObject>();
                 _surveyObj._obj = _objDic.GetObject(_surveyObj.name);   //各オブジェクトのデータを取得してセット
                 _surveyObj.CorrectFlag
+                    .SkipLatestValueOnSubscribe()   //登録した時の初期値のPushを無視
                     .Subscribe(x =>
                     {
                         if(x == true)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UniRx;
-using DG.DOTweenEditor;
 using DG.Tweening;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
@@ -13,12 +12,9 @@ using ISMS.Presenter.Detail.Player;
 
 namespace ISMS.Presenter.Detail.UI
 {
-    public class WaitWindow : MonoBehaviour
+    public class WaitWindow : BaseUIWindow
     {
-        [SerializeField]
-        GameObject _player;
-        PlayerCore _playerState;
-        IInputProvider _input;
+        protected override PlayerState myState { get; set; } = PlayerState.Wait;
 
 
         [SerializeField]
@@ -33,25 +29,13 @@ namespace ISMS.Presenter.Detail.UI
         [SerializeField]
         int CutInWaitTime;
 
-        
-        void Start()
+        protected override void Initialize()
         {
-            _playerState = _player.GetComponent<PlayerCore>();
-            _input = _player.GetComponent<PlayerInputData>();
-
-            _playerState.CurrentPlayerState
-                .Where(x => x == PlayerState.Wait)
-                .Subscribe(x =>
-                {
-                    this.gameObject.SetActive(true);
-                }).AddTo(this);
-
             _input.AnyButtonPush
-                .Where(_ => _playerState.CurrentPlayerState.Value == PlayerState.Wait)
-                .Where(x => x == true)
+                .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                 .Subscribe(_ =>
                 {
-                    OnExitWaitState();
+                    ExitWindow();
                 }).AddTo(this);
         }
 
@@ -79,14 +63,17 @@ namespace ISMS.Presenter.Detail.UI
             CutInTextObj.localPosition = StartPos;
         }
 
-        //何かのキーが押された時の処理
-        async void OnExitWaitState()
+        protected override void DisplayWindow()
+        {
+            this.gameObject.SetActive(true);
+        }
+
+        protected override async void ExitWindow()
         {
             BlinkText.gameObject.SetActive(false);
             await PlayCutIn();
-            _playerState.ChangeCurrentPlayerState(PlayerState.Explore); //Exploreステートへ変更
-            this.gameObject.SetActive(false);   //非表示
+            _state.ChangeCurrentPlayerState(PlayerState.Explore);
+            this.gameObject.SetActive(false);
         }
-
     }
 }

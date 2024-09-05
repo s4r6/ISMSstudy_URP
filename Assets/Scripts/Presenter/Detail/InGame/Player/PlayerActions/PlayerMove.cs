@@ -34,11 +34,11 @@ namespace ISMS.Presenter.Detail.Player
 
         IInputProvider _input;
 
-        private void Awake()
+        void Awake()
         {
             _input = GetComponent<IInputProvider>();
         }
-        private void Start()
+        void Start()
         {
             playerCore = this.gameObject.GetComponent<PlayerCore>();
 
@@ -64,14 +64,14 @@ namespace ISMS.Presenter.Detail.Player
                 }).AddTo(this);
         }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
             if (!isMovable) return;
             playerController.Move(MoveDirection * speed * Time.deltaTime);
             CameraRotate();
         }
 
-        private void CameraRotate()
+        void CameraRotate()
         {
             float turn = LookDir.x * turnSpeed * Time.deltaTime;
             this.gameObject.transform.Rotate(0, turn, 0);
@@ -80,7 +80,7 @@ namespace ISMS.Presenter.Detail.Player
             WebCameraSet.localEulerAngles = new Vector3(vertiRotate, 0.0f, 0.0f);
         }
 
-        private void MoveProcess(Vector2 MoveDir)
+        void MoveProcess(Vector2 MoveDir)
         {
             MoveDirection = new Vector3(MoveDir.x, 0.0f, MoveDir.y);
             MoveDirection = WebCameraSet.TransformDirection(MoveDirection);

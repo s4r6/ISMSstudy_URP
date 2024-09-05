@@ -93,7 +93,7 @@ namespace ISMS.Presenter.Detail
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""JujiKey"",
+                    ""name"": ""PageChange"",
                     ""type"": ""Value"",
                     ""id"": ""ed345e20-ebcb-49fa-a78b-b512592edddb"",
                     ""expectedControlType"": ""Vector2"",
@@ -120,12 +120,12 @@ namespace ISMS.Presenter.Detail
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""R1Action"",
+                    ""name"": ""Document"",
                     ""type"": ""Button"",
                     ""id"": ""7b21e5e8-45f1-4192-ac0c-622f0c7708b8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -163,6 +163,24 @@ namespace ISMS.Presenter.Detail
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RightPage"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8b5ad6c-161c-4d73-8349-2d03508ec438"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""KeyRepeat"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftPage"",
+                    ""type"": ""Button"",
+                    ""id"": ""adbdd617-5f89-4cb1-b46f-b3ca63b714e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""KeyRepeat"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -635,7 +653,7 @@ namespace ISMS.Presenter.Detail
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JujiKey"",
+                    ""action"": ""PageChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -646,7 +664,7 @@ namespace ISMS.Presenter.Detail
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JujiKey"",
+                    ""action"": ""PageChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -657,9 +675,42 @@ namespace ISMS.Presenter.Detail
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JujiKey"",
+                    ""action"": ""PageChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Right&Left"",
+                    ""id"": ""f717a223-cb90-4173-b21d-b23ea43468a6"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PageChange"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""b273e7dd-d1eb-4308-9058-466ac7d0b1fc"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PageChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""1f4688d6-bc04-4e64-ab39-436c70cab191"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PageChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -899,7 +950,7 @@ namespace ISMS.Presenter.Detail
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""R1Action"",
+                    ""action"": ""Document"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -910,7 +961,7 @@ namespace ISMS.Presenter.Detail
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""R1Action"",
+                    ""action"": ""Document"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -966,6 +1017,94 @@ namespace ISMS.Presenter.Detail
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Looking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb3b28e8-0205-4466-8e85-97f2511f7399"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30ab5b2e-67c3-478b-9719-6c17b5217881"",
+                    ""path"": ""<XInputController>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2517f04d-870c-4fa5-bfc4-9cd26103de04"",
+                    ""path"": ""<WebGLGamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e78675a-4cd1-40f6-a57a-4e3fb38afff3"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88dc26ce-f353-4bac-84fb-04d42145fbe6"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b80b700-857c-448e-9f67-d7d017cde1de"",
+                    ""path"": ""<WebGLGamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef935142-94af-44d4-b7b8-de200177620a"",
+                    ""path"": ""<XInputController>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5419729-f6da-4df3-8256-ad081b6489bb"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftPage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1606,14 +1745,16 @@ namespace ISMS.Presenter.Detail
             m_Player_Risk = m_Player.FindAction("Risk", throwIfNotFound: true);
             m_Player_Gimic = m_Player.FindAction("Gimic", throwIfNotFound: true);
             m_Player_Archives = m_Player.FindAction("Archives", throwIfNotFound: true);
-            m_Player_JujiKey = m_Player.FindAction("JujiKey", throwIfNotFound: true);
+            m_Player_PageChange = m_Player.FindAction("PageChange", throwIfNotFound: true);
             m_Player_Any = m_Player.FindAction("Any", throwIfNotFound: true);
             m_Player_CameraReset = m_Player.FindAction("CameraReset", throwIfNotFound: true);
-            m_Player_R1Action = m_Player.FindAction("R1Action", throwIfNotFound: true);
+            m_Player_Document = m_Player.FindAction("Document", throwIfNotFound: true);
             m_Player_DebugMode = m_Player.FindAction("DebugMode", throwIfNotFound: true);
             m_Player_R2Action = m_Player.FindAction("R2Action", throwIfNotFound: true);
             m_Player_L2Action = m_Player.FindAction("L2Action", throwIfNotFound: true);
             m_Player_Looking = m_Player.FindAction("Looking", throwIfNotFound: true);
+            m_Player_RightPage = m_Player.FindAction("RightPage", throwIfNotFound: true);
+            m_Player_LeftPage = m_Player.FindAction("LeftPage", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_AnyButton = m_UI.FindAction("AnyButton", throwIfNotFound: true);
@@ -1695,14 +1836,16 @@ namespace ISMS.Presenter.Detail
         private readonly InputAction m_Player_Risk;
         private readonly InputAction m_Player_Gimic;
         private readonly InputAction m_Player_Archives;
-        private readonly InputAction m_Player_JujiKey;
+        private readonly InputAction m_Player_PageChange;
         private readonly InputAction m_Player_Any;
         private readonly InputAction m_Player_CameraReset;
-        private readonly InputAction m_Player_R1Action;
+        private readonly InputAction m_Player_Document;
         private readonly InputAction m_Player_DebugMode;
         private readonly InputAction m_Player_R2Action;
         private readonly InputAction m_Player_L2Action;
         private readonly InputAction m_Player_Looking;
+        private readonly InputAction m_Player_RightPage;
+        private readonly InputAction m_Player_LeftPage;
         public struct PlayerActions
         {
             private @PlayerInputActions m_Wrapper;
@@ -1714,14 +1857,16 @@ namespace ISMS.Presenter.Detail
             public InputAction @Risk => m_Wrapper.m_Player_Risk;
             public InputAction @Gimic => m_Wrapper.m_Player_Gimic;
             public InputAction @Archives => m_Wrapper.m_Player_Archives;
-            public InputAction @JujiKey => m_Wrapper.m_Player_JujiKey;
+            public InputAction @PageChange => m_Wrapper.m_Player_PageChange;
             public InputAction @Any => m_Wrapper.m_Player_Any;
             public InputAction @CameraReset => m_Wrapper.m_Player_CameraReset;
-            public InputAction @R1Action => m_Wrapper.m_Player_R1Action;
+            public InputAction @Document => m_Wrapper.m_Player_Document;
             public InputAction @DebugMode => m_Wrapper.m_Player_DebugMode;
             public InputAction @R2Action => m_Wrapper.m_Player_R2Action;
             public InputAction @L2Action => m_Wrapper.m_Player_L2Action;
             public InputAction @Looking => m_Wrapper.m_Player_Looking;
+            public InputAction @RightPage => m_Wrapper.m_Player_RightPage;
+            public InputAction @LeftPage => m_Wrapper.m_Player_LeftPage;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1752,18 +1897,18 @@ namespace ISMS.Presenter.Detail
                 @Archives.started += instance.OnArchives;
                 @Archives.performed += instance.OnArchives;
                 @Archives.canceled += instance.OnArchives;
-                @JujiKey.started += instance.OnJujiKey;
-                @JujiKey.performed += instance.OnJujiKey;
-                @JujiKey.canceled += instance.OnJujiKey;
+                @PageChange.started += instance.OnPageChange;
+                @PageChange.performed += instance.OnPageChange;
+                @PageChange.canceled += instance.OnPageChange;
                 @Any.started += instance.OnAny;
                 @Any.performed += instance.OnAny;
                 @Any.canceled += instance.OnAny;
                 @CameraReset.started += instance.OnCameraReset;
                 @CameraReset.performed += instance.OnCameraReset;
                 @CameraReset.canceled += instance.OnCameraReset;
-                @R1Action.started += instance.OnR1Action;
-                @R1Action.performed += instance.OnR1Action;
-                @R1Action.canceled += instance.OnR1Action;
+                @Document.started += instance.OnDocument;
+                @Document.performed += instance.OnDocument;
+                @Document.canceled += instance.OnDocument;
                 @DebugMode.started += instance.OnDebugMode;
                 @DebugMode.performed += instance.OnDebugMode;
                 @DebugMode.canceled += instance.OnDebugMode;
@@ -1776,6 +1921,12 @@ namespace ISMS.Presenter.Detail
                 @Looking.started += instance.OnLooking;
                 @Looking.performed += instance.OnLooking;
                 @Looking.canceled += instance.OnLooking;
+                @RightPage.started += instance.OnRightPage;
+                @RightPage.performed += instance.OnRightPage;
+                @RightPage.canceled += instance.OnRightPage;
+                @LeftPage.started += instance.OnLeftPage;
+                @LeftPage.performed += instance.OnLeftPage;
+                @LeftPage.canceled += instance.OnLeftPage;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1801,18 +1952,18 @@ namespace ISMS.Presenter.Detail
                 @Archives.started -= instance.OnArchives;
                 @Archives.performed -= instance.OnArchives;
                 @Archives.canceled -= instance.OnArchives;
-                @JujiKey.started -= instance.OnJujiKey;
-                @JujiKey.performed -= instance.OnJujiKey;
-                @JujiKey.canceled -= instance.OnJujiKey;
+                @PageChange.started -= instance.OnPageChange;
+                @PageChange.performed -= instance.OnPageChange;
+                @PageChange.canceled -= instance.OnPageChange;
                 @Any.started -= instance.OnAny;
                 @Any.performed -= instance.OnAny;
                 @Any.canceled -= instance.OnAny;
                 @CameraReset.started -= instance.OnCameraReset;
                 @CameraReset.performed -= instance.OnCameraReset;
                 @CameraReset.canceled -= instance.OnCameraReset;
-                @R1Action.started -= instance.OnR1Action;
-                @R1Action.performed -= instance.OnR1Action;
-                @R1Action.canceled -= instance.OnR1Action;
+                @Document.started -= instance.OnDocument;
+                @Document.performed -= instance.OnDocument;
+                @Document.canceled -= instance.OnDocument;
                 @DebugMode.started -= instance.OnDebugMode;
                 @DebugMode.performed -= instance.OnDebugMode;
                 @DebugMode.canceled -= instance.OnDebugMode;
@@ -1825,6 +1976,12 @@ namespace ISMS.Presenter.Detail
                 @Looking.started -= instance.OnLooking;
                 @Looking.performed -= instance.OnLooking;
                 @Looking.canceled -= instance.OnLooking;
+                @RightPage.started -= instance.OnRightPage;
+                @RightPage.performed -= instance.OnRightPage;
+                @RightPage.canceled -= instance.OnRightPage;
+                @LeftPage.started -= instance.OnLeftPage;
+                @LeftPage.performed -= instance.OnLeftPage;
+                @LeftPage.canceled -= instance.OnLeftPage;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -2022,14 +2179,16 @@ namespace ISMS.Presenter.Detail
             void OnRisk(InputAction.CallbackContext context);
             void OnGimic(InputAction.CallbackContext context);
             void OnArchives(InputAction.CallbackContext context);
-            void OnJujiKey(InputAction.CallbackContext context);
+            void OnPageChange(InputAction.CallbackContext context);
             void OnAny(InputAction.CallbackContext context);
             void OnCameraReset(InputAction.CallbackContext context);
-            void OnR1Action(InputAction.CallbackContext context);
+            void OnDocument(InputAction.CallbackContext context);
             void OnDebugMode(InputAction.CallbackContext context);
             void OnR2Action(InputAction.CallbackContext context);
             void OnL2Action(InputAction.CallbackContext context);
             void OnLooking(InputAction.CallbackContext context);
+            void OnRightPage(InputAction.CallbackContext context);
+            void OnLeftPage(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

@@ -90,10 +90,10 @@ public class ResultScript : MonoBehaviour
     private void RankJudgeProcess()
     {
         int rankPoint = 0;
-        int riskNum = StageData.GetRiskNum();
+        //int riskNum = StageData.GetRiskNum();
 
 
-        //ミスカウントの加点
+        /*//ミスカウントの加点
         if (missCount==0)
         {
             rankPoint += 3;
@@ -109,7 +109,7 @@ public class ResultScript : MonoBehaviour
         else
         {
             rankPoint += 0;
-        }
+        }*/
 
         //時間による加点
         if (Minutes < 3)
@@ -308,7 +308,7 @@ public class ResultScript : MonoBehaviour
             if (activeFrame == 140)
             {
                 TMPMissText.gameObject.SetActive(true);
-                missCount = _gameData.JudgeCount - StageData.GetRiskNum();
+                //missCount = _gameData.JudgeCount - StageData.GetRiskNum();
                 TMPMissValue.text = missCount.ToString() + "回";
                 //AudioManager.instance.playSE(11);
             }

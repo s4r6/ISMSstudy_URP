@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "JujiKey",
+                    "name": "PageChange",
                     "type": "Value",
                     "id": "ed345e20-ebcb-49fa-a78b-b512592edddb",
                     "expectedControlType": "Vector2",
@@ -96,12 +96,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "R1Action",
+                    "name": "Document",
                     "type": "Button",
                     "id": "7b21e5e8-45f1-4192-ac0c-622f0c7708b8",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -139,6 +139,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "RightPage",
+                    "type": "Button",
+                    "id": "e8b5ad6c-161c-4d73-8349-2d03508ec438",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "KeyRepeat",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftPage",
+                    "type": "Button",
+                    "id": "adbdd617-5f89-4cb1-b46f-b3ca63b714e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "KeyRepeat",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -611,7 +629,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JujiKey",
+                    "action": "PageChange",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -622,7 +640,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JujiKey",
+                    "action": "PageChange",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -633,9 +651,42 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JujiKey",
+                    "action": "PageChange",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Right&Left",
+                    "id": "f717a223-cb90-4173-b21d-b23ea43468a6",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PageChange",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Left",
+                    "id": "b273e7dd-d1eb-4308-9058-466ac7d0b1fc",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PageChange",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "1f4688d6-bc04-4e64-ab39-436c70cab191",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PageChange",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -875,7 +926,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "R1Action",
+                    "action": "Document",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -886,7 +937,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "R1Action",
+                    "action": "Document",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -942,6 +993,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "Looking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb3b28e8-0205-4466-8e85-97f2511f7399",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30ab5b2e-67c3-478b-9719-6c17b5217881",
+                    "path": "<XInputController>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2517f04d-870c-4fa5-bfc4-9cd26103de04",
+                    "path": "<WebGLGamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e78675a-4cd1-40f6-a57a-4e3fb38afff3",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88dc26ce-f353-4bac-84fb-04d42145fbe6",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b80b700-857c-448e-9f67-d7d017cde1de",
+                    "path": "<WebGLGamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef935142-94af-44d4-b7b8-de200177620a",
+                    "path": "<XInputController>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5419729-f6da-4df3-8256-ad081b6489bb",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftPage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
