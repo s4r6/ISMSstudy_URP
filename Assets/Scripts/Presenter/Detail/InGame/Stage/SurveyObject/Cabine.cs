@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ISMS.Presenter.Detail.Stage
 {
-    public class CabineScripts : MonoBehaviour, IActionable
+    public class Cabine : MonoBehaviour, IActionable
     {
 
         //float cabineStartX = 3.15f;
