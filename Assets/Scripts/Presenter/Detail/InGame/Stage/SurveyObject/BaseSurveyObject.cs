@@ -41,7 +41,6 @@ namespace ISMS.Presenter.Detail.Stage
         {
             if(_riskFlag == CheckFlag.NotSurvey)
             {
-                Debug.Log("Survey");
                 if (_risk == Risk.DENGER)   //危険なオブジェクトなら正解
                 {
                     _riskFlag = CheckFlag.Denger;
@@ -49,7 +48,6 @@ namespace ISMS.Presenter.Detail.Stage
                 }
                 else if (_risk == Risk.SAFE)    //安全なオブジェクトなら不正解
                 {
-                    Debug.Log("IsSafe");
                     _riskFlag = CheckFlag.Safe;
                     _correctFlag.SetValueAndForceNotify(false); //初期値がfalseのため、同じ値に変更された場合でもイベントを発行するようにする
                 }

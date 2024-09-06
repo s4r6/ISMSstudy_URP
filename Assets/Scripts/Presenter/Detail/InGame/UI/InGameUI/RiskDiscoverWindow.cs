@@ -4,12 +4,14 @@ using UnityEngine;
 using TMPro;
 using ISMS.Presenter.Detail.Player;
 using ISMS.Presenter.Detail.Stage;
+using DG.Tweening;
 using UniRx;
 using ISMS.Data;
+using UnityEngine.UI;
 
 namespace ISMS.Presenter.Detail.UI
 {
-    public class RiskDiscoverWindow : MonoBehaviour
+    public class RiskDiscoverWindow : BaseUIWindow
     {
 
         [SerializeField]
@@ -30,45 +32,27 @@ namespace ISMS.Presenter.Detail.UI
         TextMeshProUGUI _explanationText;
 
         [SerializeField]
-        GameObject CutIn;
+        GameObject _cutIn;
+        [SerializeField]
+        GameObject _dengerMark;
+        [SerializeField]
+        Material _cutInMaterial;
+        [SerializeField]
+        float _slideSpeed;
+
+        protected override PlayerState myState { get; set; } = PlayerState.Discover;
 
         const int CORRECT = 0;
         const int INCORRECT = 1;
 
-        // Start is called before the first frame update
-        void Start()
+        protected override void Initialize()
         {
-            _state = _player.GetComponent<PlayerCore>();
-            _inspect = _player.GetComponent<PlayerInspect>();
-            _input = _player.GetComponent<IInputProvider>();
-
             foreach (var mark in _judgeMark)
             {
                 mark.SetActive(false);
             }
 
-            _state.CurrentPlayerState
-                .Subscribe(x =>
-                {
-                    if(x == PlayerState.Discover)
-                    {
-                        SetRiskData();
-                        DisplayWindow();
-                    }
-                    else
-                    {
-                        this.gameObject.SetActive(false);
-                    }
-                    
-                }).AddTo(this);
-
-            _input.BackButtonPush
-               .Where(x => x == true && _state.CurrentPlayerState.Value == PlayerState.Discover)
-               .Subscribe(_ =>
-               {
-                   ExitDiscoverWindow();
-               }).AddTo(this);
-
+            _cutInMaterial = _cutIn.GetComponent<Image>().material;
 
             this.gameObject.SetActive(false);
         }
@@ -94,18 +78,22 @@ namespace ISMS.Presenter.Detail.UI
             
         }
 
-        void DisplayWindow()
+        void Update()
         {
-            this.gameObject.SetActive(true);
+            if(_cutInMaterial != null)
+            {
+                //var x = Mathf.Repeat(Time.time * _slideSpeed, )
+            }    
         }
 
-        void ExitDiscoverWindow()
+        protected override void DisplayWindow()
         {
-            foreach (var mark in _judgeMark)
-            {
-                mark.SetActive(false);
-            }
-            _state.ChangeCurrentPlayerState(PlayerState.Explore);
+            SetRiskData();
+
+            var sequence = DOTween.Sequence();
+            //sequence.Append()
+
+            this.gameObject.SetActive(true);
         }
     }
 }

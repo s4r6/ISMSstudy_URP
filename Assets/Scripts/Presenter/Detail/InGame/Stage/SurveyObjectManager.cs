@@ -33,7 +33,7 @@ namespace ISMS.Presenter.Detail.Stage
                 _surveyObj._obj = _objDic.GetObject(_surveyObj.name);   //各オブジェクトのデータを取得してセット
                 _surveyObj.CorrectFlag
                     .SkipLatestValueOnSubscribe()   //登録した時の初期値のPushを無視
-                    .Subscribe(x =>
+                    .Subscribe(async x =>
                     {
                         if(x == true)
                         {
@@ -41,6 +41,7 @@ namespace ISMS.Presenter.Detail.Stage
                             if (DengerObjNum == 0)
                             {
                                 Debug.Log("終了");
+                                await UniTask.WaitUntil(() => _player.CurrentPlayerState.Value == PlayerState.Explore);
                                 _player.ChangeCurrentPlayerState(PlayerState.Result);
                             }
                         }
