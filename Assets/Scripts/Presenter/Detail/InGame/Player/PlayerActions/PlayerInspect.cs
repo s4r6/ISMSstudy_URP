@@ -34,6 +34,7 @@ namespace ISMS.Presenter.Detail.Player
                 .Where(x => x == true && PreHitObj != null)
                 .Subscribe(_ =>
                 {
+                    Debug.Log(PreHitObj.name);
                     _playerState.ChangeCurrentPlayerState(PlayerState.DetailInfo);
                 }).AddTo(this);
 
@@ -42,7 +43,7 @@ namespace ISMS.Presenter.Detail.Player
                 .Where(x =>x == true && _actionableObj != null)
                 .Subscribe(_ =>
                 {
-                    Debug.Log(_);
+                    Debug.Log("Action");
                     _actionableObj.Action();
                 }).AddTo(this);
         }
@@ -65,17 +66,18 @@ namespace ISMS.Presenter.Detail.Player
 
             var SurveyObj = hit.collider.gameObject.GetComponent<BaseSurveyObject>();
             var ActionableObj = hit.collider.gameObject.GetComponent<IActionable>();
-            if (SurveyObj != null)
+            Debug.Log(ActionableObj);
+            if (SurveyObj != null || ActionableObj != null)
             {
                 PreHitObj = SurveyObj;
                 _actionableObj = ActionableObj;
-                Debug.Log("HitSurvey");
+                Debug.Log("Actionable");
             }
             else
             {
                 PreHitObj = null;
                 _actionableObj = null;
-                Debug.Log("NoHit");
+                Debug.Log("NoAction");
             }
         }
 

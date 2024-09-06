@@ -26,6 +26,7 @@ namespace ISMS.Presenter.Detail.Player
         }
         public void ChangeCurrentPlayerState(PlayerState nextState)
         {
+            Debug.Log(nextState);
             currentPlayerState.Value = nextState;
         }
 

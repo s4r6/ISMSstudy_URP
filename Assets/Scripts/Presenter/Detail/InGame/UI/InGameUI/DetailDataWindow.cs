@@ -35,6 +35,8 @@ namespace ISMS.Presenter.Detail.UI
                         _state.ChangeCurrentPlayerState(PlayerState.Discover);
                         this.gameObject.SetActive(false);
                     }
+                    else
+                        SystemMessage.SetMessage(SystemCode.Surveyed);  //調査済みオブジェクトの場合システムメッセージを表示する
                 }).AddTo(this);
 
             this.gameObject.SetActive(false);
