@@ -5,6 +5,7 @@ using TMPro;
 using ISMS.Presenter.Detail.Player;
 using ISMS.Presenter.Detail.Stage;
 using DG.Tweening;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using ISMS.Data;
 using UnityEngine.UI;
@@ -15,9 +16,6 @@ namespace ISMS.Presenter.Detail.UI
     {
 
         [SerializeField]
-        GameObject _player;
-        PlayerCore _state;
-        IInputProvider _input;
         PlayerInspect _inspect;
 
         [SerializeField]
@@ -27,18 +25,14 @@ namespace ISMS.Presenter.Detail.UI
         GameObject[] _judgeMark;
         [SerializeField]
         TextMeshProUGUI _judgeText;
-        
         [SerializeField]
         TextMeshProUGUI _explanationText;
 
         [SerializeField]
         GameObject _cutIn;
         [SerializeField]
-        GameObject _dengerMark;
-        [SerializeField]
-        Material _cutInMaterial;
-        [SerializeField]
-        float _slideSpeed;
+        GameObject _backGround;
+
 
         protected override PlayerState myState { get; set; } = PlayerState.Discover;
 
@@ -52,8 +46,18 @@ namespace ISMS.Presenter.Detail.UI
                 mark.SetActive(false);
             }
 
-            _cutInMaterial = _cutIn.GetComponent<Image>().material;
+            _cutIn.GetComponent<RiskCutIn>().OnEndAnimation
+                .Subscribe(_ =>
+                {
+                    _backGround.transform.localScale = Vector3.zero;
+                    _backGround.SetActive(true);
 
+                    _backGround.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)
+                    .SetEase(Ease.OutCubic);
+                }).AddTo(this);
+
+            _backGround.SetActive(false);
+            _cutIn.SetActive(false);
             this.gameObject.SetActive(false);
         }
 
@@ -73,27 +77,33 @@ namespace ISMS.Presenter.Detail.UI
                 _judgeText.text = "ÉäÉXÉNî≠å© : é∏îsÅc";
                 _judgeMark[INCORRECT].SetActive(true);
             }
-                
-
-            
         }
 
-        void Update()
+        protected override async void ExitWindow()
         {
-            if(_cutInMaterial != null)
+            if (!_backGround.activeSelf) return;
+            await _backGround.transform.DOScale(new Vector3(0, 0, 0), DisplayTime)
+                .SetEase(Ease.OutCubic);
+
+            _backGround.SetActive(false);
+            this.gameObject.SetActive(false);
+
+            foreach (var mark in _judgeMark)
             {
-                //var x = Mathf.Repeat(Time.time * _slideSpeed, )
-            }    
+                mark.SetActive(false);
+            }
+
+            _state.ChangeCurrentPlayerState(PlayerState.Explore);
+                
         }
 
         protected override void DisplayWindow()
         {
             SetRiskData();
 
-            var sequence = DOTween.Sequence();
-            //sequence.Append()
-
             this.gameObject.SetActive(true);
+            
+            _cutIn.GetComponent<RiskCutIn>().Animation();
         }
     }
 }
