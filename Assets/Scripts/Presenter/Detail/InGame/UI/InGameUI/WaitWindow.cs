@@ -27,7 +27,7 @@ namespace ISMS.Presenter.Detail.UI
         [SerializeField]
         float CutInOutTime; 
         [SerializeField]
-        int CutInWaitTime;
+        float CutInWaitTime;
 
         protected override void Initialize()
         {
@@ -46,21 +46,27 @@ namespace ISMS.Presenter.Detail.UI
         }
 
         //カットインの再生
-        async UniTask PlayCutIn()
+        void PlayCutIn()
         {
             var CutInTextObj = CutInText.GetComponent<RectTransform>();
             var StartPos = CutInTextObj.localPosition;
 
-            await CutInTextObj.DOAnchorPos(new Vector3(0, 0, 0), CutInOutTime)
-                    .SetEase(Ease.OutCubic);
+            var sequence = DOTween.Sequence();
 
-            await UniTask.Delay(CutInWaitTime);
+            sequence.Append(CutInTextObj.DOAnchorPos(new Vector3(0, 0, 0), CutInOutTime)
+                    .SetEase(Ease.OutCubic))
+                    .AppendInterval(CutInWaitTime)
+                    .Append(CutInTextObj.DOAnchorPos(new Vector3(-StartPos.x, 0, 0), CutInOutTime)
+                    .SetEase(Ease.InCubic))
+                    .OnComplete(() =>
+                    {
+                        CutInTextObj.gameObject.SetActive(false);
+                        CutInTextObj.localPosition = StartPos;
+                        _state.ChangeCurrentPlayerState(PlayerState.Explore);
+                        this.gameObject.SetActive(false);
+                    });
 
-            await CutInTextObj.DOAnchorPos(new Vector3(-StartPos.x, 0, 0), CutInOutTime)
-                    .SetEase(Ease.InCubic);
-
-            CutInTextObj.gameObject.SetActive(false);
-            CutInTextObj.localPosition = StartPos;
+            
         }
 
         protected override void DisplayWindow()
@@ -68,12 +74,10 @@ namespace ISMS.Presenter.Detail.UI
             this.gameObject.SetActive(true);
         }
 
-        protected override async void ExitWindow()
+        protected override void ExitWindow()
         {
             BlinkText.gameObject.SetActive(false);
-            await PlayCutIn();
-            _state.ChangeCurrentPlayerState(PlayerState.Explore);
-            this.gameObject.SetActive(false);
+            PlayCutIn();
         }
     }
 }

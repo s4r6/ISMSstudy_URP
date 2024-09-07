@@ -50,14 +50,15 @@ namespace ISMS.Presenter.Detail.UI
                 .SetEase(Ease.OutCubic);
         }
 
-        protected virtual async void ExitWindow() //段々小さくする
+        protected virtual void ExitWindow() //段々小さくする
         {
-            Debug.Log("Exit");
-            await this.transform.DOScale(new Vector3(0, 0, 0), DisplayTime)
-                .SetEase(Ease.OutCubic);
-
-            this.gameObject.SetActive(false);
-            _state.ChangeCurrentPlayerState(PlayerState.Explore);
+            this.transform.DOScale(new Vector3(0, 0, 0), DisplayTime)
+                .SetEase(Ease.OutCubic)
+                .OnComplete(() =>
+                {
+                    this.gameObject.SetActive(false);
+                    _state.ChangeCurrentPlayerState(PlayerState.Explore);
+                });
         }
 
         protected abstract void Initialize();   //継承先で使用するStart関数の代わり
