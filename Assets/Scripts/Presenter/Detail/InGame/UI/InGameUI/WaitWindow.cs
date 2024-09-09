@@ -12,6 +12,9 @@ using ISMS.Presenter.Detail.Player;
 
 namespace ISMS.Presenter.Detail.UI
 {
+    /// <summary>
+    /// 待機画面のUIを管理するクラス
+    /// </summary>
     public class WaitWindow : BaseUIWindow
     {
         protected override PlayerState myState { get; set; } = PlayerState.Wait;
@@ -29,9 +32,9 @@ namespace ISMS.Presenter.Detail.UI
         [SerializeField]
         float CutInWaitTime;
 
-        protected override void Initialize()
+        protected override void Initialize()    
         {
-            _input.AnyButtonPush
+            _input.AnyButtonPush    //何かボタンが押されるのを検知
                 .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                 .Subscribe(_ =>
                 {
@@ -76,8 +79,8 @@ namespace ISMS.Presenter.Detail.UI
 
         protected override void ExitWindow()
         {
-            BlinkText.gameObject.SetActive(false);
-            PlayCutIn();
+            BlinkText.gameObject.SetActive(false);  //"なにかボタンを押すと始まります"を非表示に
+            PlayCutIn();    //カットインアニメーションの再生
         }
     }
 }

@@ -7,6 +7,9 @@ using UniRx;
 
 namespace ISMS.Presenter.Detail.UI
 {
+    /// <summary>
+    /// リスク発見時に表示するカットインを管理するクラス
+    /// </summary>
     public class RiskCutIn : MonoBehaviour
     {
         const float MAX_OFFSET = 0.62f;
@@ -39,7 +42,7 @@ namespace ISMS.Presenter.Detail.UI
             _textStartPos = _discoverText.transform.localPosition;  //リスク発見テキストの最初の位置を保存
             _loupeStartPos = _loupeMark.transform.localPosition;    //ルーペの最初の位置を保存
 
-            _loupeMarkAnimation = DOTween.Sequence()
+            _loupeMarkAnimation = DOTween.Sequence()    //ルーペの移動アニメーションの後に、危険マークと共に移動するアニメーションを行う
                 .Append(_loupeMark.transform.DOLocalMoveX(_loupeStartPos.x * -1, 0.3f))
                 .Append(_loupeMark.transform.DOLocalMoveX(0, 0.15f))
                 .AppendInterval(0.3f)
@@ -55,7 +58,7 @@ namespace ISMS.Presenter.Detail.UI
                 .Pause()
                 .SetLink(gameObject);
 
-            _dengerMarkAnimation = DOTween.Sequence()
+            _dengerMarkAnimation = DOTween.Sequence()   //危険マークを拡大・縮小するアニメーション
                 .Append(_dengerMark.transform.DOScale(Vector3.one * 0.3f, 0.3f))
                 .Append(_dengerMark.transform.DOScale(Vector3.one * 0.5f, 0.3f))
                 .OnComplete(() => _loupeMarkAnimation.Restart())
@@ -77,7 +80,7 @@ namespace ISMS.Presenter.Detail.UI
             _loupeMark.transform.localPosition = _loupeStartPos;
         }
 
-        void Update()
+        void Update()   //背景をスライドする
         {
             if (_material != null)
             {
@@ -91,7 +94,6 @@ namespace ISMS.Presenter.Detail.UI
         //カットインアニメーションを行う
         public void Animation()
         {
-            Debug.Log("アニメーション");
             _dengerMark.transform.localScale = Vector3.one * 0.7f;
             this.gameObject.SetActive(true);
 

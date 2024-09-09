@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ISMS.Presenter.Detail.Stage
 {
+    /// <summary>
+    /// ドアのアニメーションや空いているか閉まっているかの状態を管理
+    /// </summary>
     public class Door : BaseSurveyObject, IActionable
     {
         Transform _cashThisTransform;
