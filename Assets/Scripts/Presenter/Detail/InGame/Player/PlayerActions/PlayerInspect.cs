@@ -5,12 +5,14 @@ using ISMS.Presenter.Detail.Stage;
 
 namespace ISMS.Presenter.Detail.Player
 {
+    /// <summary>
+    /// オブジェクトの詳細を取得するクラス
+    /// </summary>
     public class PlayerInspect : MonoBehaviour
     {
         [SerializeField]
         GameObject _player;
-        CameraRayCast _playerCamera;
-        PlayerCore _playerState;
+        PlayerCore _state;
         IInputProvider _input;
 
         RaycastHit hit;     // Rayを飛ばして当たったオブジェクトの情報を格納する変数
@@ -25,32 +27,30 @@ namespace ISMS.Presenter.Detail.Player
         {
             _mainCamera = Camera.main;
 
-            _playerCamera = _player.GetComponent<CameraRayCast>();
-            _playerState = _player.GetComponent<PlayerCore>();
+            _state = _player.GetComponent<PlayerCore>();
             _input = _player.GetComponent<IInputProvider>();
 
-            _input.InspectButtonPush
-                .Where(_ => _playerState.CurrentPlayerState.Value == PlayerState.Explore)
+            _input.InspectButtonPush    //調査ボタンが押されたら状態変更
+                .Where(_ => _state.CurrentPlayerState.Value == PlayerState.Explore)
                 .Where(x => x == true && PreHitObj != null)
                 .Subscribe(_ =>
                 {
-                    Debug.Log(PreHitObj.name);
-                    _playerState.ChangeCurrentPlayerState(PlayerState.DetailInfo);
+                    _state.ChangeCurrentPlayerState(PlayerState.DetailInfo);
                 }).AddTo(this);
 
-            _input.GimicActionButtonPush
-                .Where(_ => _playerState.CurrentPlayerState.Value == PlayerState.Explore)
+            _input.GimicActionButtonPush    //アクションボタンが押されたら目の前のオブジェクトに対して設定されているアクションを行う
+                .Where(_ => _state.CurrentPlayerState.Value == PlayerState.Explore)
                 .Where(x =>x == true && _actionableObj != null)
                 .Subscribe(_ =>
                 {
-                    Debug.Log("Action");
                     _actionableObj.Action();
                 }).AddTo(this);
         }
 
         void FixedUpdate()
         {
-            if (_playerState.CurrentPlayerState.Value != PlayerState.Explore) return;
+            //探索状態の時に目の前のオブジェクトを取得
+            if (_state.CurrentPlayerState.Value != PlayerState.Explore) return; 
             RayHitProcess();
         }
 
@@ -61,23 +61,20 @@ namespace ISMS.Presenter.Detail.Player
             var rayDir = _mainCamera.transform.forward;
 
             var isHit = Physics.SphereCast(rayOrigin, rayRadius, rayDir, out hit, rayRange);
-            //Rayの先にオブジェクトが有れば
+            
             if (!isHit) return;
-
+            //Rayの先に調査可能・アクション可能オブジェクトが有れば取得
             var SurveyObj = hit.collider.gameObject.GetComponent<BaseSurveyObject>();
             var ActionableObj = hit.collider.gameObject.GetComponent<IActionable>();
-            Debug.Log(ActionableObj);
             if (SurveyObj != null || ActionableObj != null)
             {
                 PreHitObj = SurveyObj;
                 _actionableObj = ActionableObj;
-                Debug.Log("Actionable");
             }
             else
             {
                 PreHitObj = null;
                 _actionableObj = null;
-                Debug.Log("NoAction");
             }
         }
 

@@ -5,6 +5,9 @@ using UniRx;
 
 namespace ISMS.Presenter.Detail.Player
 {
+    /// <summary>
+    /// Žæ“¾‚µ‚½“ü—Í‚ðŠO•”‚ÉŒöŠJ
+    /// </summary>
     public interface IInputProvider
     {
         IReadOnlyReactiveProperty<Vector2> MoveDirection { get; }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ISMS.Presenter.Detail
 {
+    /// <summary>
+    /// プレイヤーの状態を表す
+    /// </summary>
     public enum PlayerState
     {
         Loading,

@@ -31,7 +31,7 @@ public class UDPConnection
     private static extern void Jslib_JoinRoom(int RoomID);
     [DllImport("__Internal")]
     private static extern void Jslib_JoinClient(string json);
-    */
+    
     [SerializeField]
     private RoomListWindow myRoomListWindow;
     //public static UDPConnection instance;
@@ -115,14 +115,14 @@ public class UDPConnection
         #endregion
 #endif
 
-        /*udpClient = new UdpClient(9000);    //9000番ポートを送受信ポートとして解放
+        udpClient = new UdpClient(9000);    //9000番ポートを送受信ポートとして解放
         udpClient.BeginReceive(OnReceived, udpClient);    //受信を開始
-        */
-        /*subject
+        
+        subject
             .ObserveOnMainThread()
             .Subscribe(msg => {
                 message.text = msg;
-            }).AddTo(this);*/
+            }).AddTo(this);
         Debug.Log("Insutans");
     }
 
@@ -130,7 +130,7 @@ public class UDPConnection
     {
         //StartCoroutine(CreateRoom());
     }
-    /*
+    
     private IEnumerator CreateRoom()    //部屋作成要求を送信
     {
         ConnectToServer();
@@ -168,7 +168,7 @@ public class UDPConnection
         #endif
     }
 
-    /*private void OnReceived(System.IAsyncResult result)
+    private void OnReceived(System.IAsyncResult result)
     {
         Debug.Log("受信を開始しました。");
         UdpClient getUdp = (UdpClient)result.AsyncState;
@@ -208,8 +208,8 @@ public class UDPConnection
         Debug.Log("a");
 
         getUdp.BeginReceive(OnReceived, getUdp);    //繰り返し受信する機能(おそらく)
-    }*/
-    /*
+    }
+    
     public void SendStageData()
     {
         StageDataPakcet stagepacket = new StageDataPakcet();
@@ -233,17 +233,17 @@ public class UDPConnection
     }
     public void SendByte(string msg = null)
     {
-        /*string SendString = "NoMessage";
+        string SendString = "NoMessage";
         if (msg != null)
             SendString = prefix + msg;
         else if (num != -1)
             SendString = prefix + num.ToString();
-        */
+        
 
         //Jslib_SendWebSocketMessage(SendString);
     }
 
-    /*public void SendByte(int SendNum)   //送られてきたint型をstring型に変換して送信
+    public void SendByte(int SendNum)   //送られてきたint型をstring型に変換して送信
     {
         var SendString = SendNum.ToString();
         var Num = Encoding.UTF8.GetBytes("St" + SendString);
@@ -269,31 +269,31 @@ public class UDPConnection
         var AnswerNum = Encoding.UTF8.GetBytes("An" + Answer);
         udpClient.Send(AnswerNum, AnswerNum.Length);
     }
-    */
-    /*
+    
+    
     // Update is called once per frame
     void Update()
     {
 
-        /*if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             Jslib_ConnectWebSocket();
-        }*/
-    /*
+        }
+    
     }
 
-    /*public void StartMatching()
+    public void StartMatching()
     {
         udpClient.Connect(host, port); //リモートエンドポイントと経路を確保
         ConnectEndFlag = true;
         Debug.Log(ConnectEndFlag);
-    }*/
-    /*
+    }
+    
     private void SetReceivedMessage(string message)
     {
         Debug.Log(message);
         string Temp;
-        /*if (message.Contains("_St"))  //ステージデータが送られてきたとき
+        if (message.Contains("_St"))  //ステージデータが送られてきたとき
         {
             Temp = message.Replace("_St", "");   //修飾語を取り除いてIntに変換
             StageNum.Value = int.Parse(Temp);
@@ -321,8 +321,8 @@ public class UDPConnection
         else
         {
             Debug.Log("受信に失敗しました:"+message);
-        }*/
-    /*
+        }
+    
     }
 
     private int SetStageNum(string StageString) //データの装飾語を取り除いてint型に変換
@@ -349,13 +349,13 @@ public class UDPConnection
         AnswerString = AnswerString.Replace("_An", "");
         return int.Parse(AnswerString);
     }
-    /*private void OnDestroy()
+    private void OnDestroy()
     {
         udpClient.Close();
-    }*/
+    }
 
 
-/*
+
     public void DisplayAllRoom()
     {
         var RoomList = RoomData.GetRoomList();  //ルームのリストを取得
@@ -428,4 +428,4 @@ public class UDPConnection
         RoomData.SetRoomInfo(RoomID, PlayerNum);
         //instance.Finish_GetRoomInfo.Value = true;
     }*/
-//}
+}

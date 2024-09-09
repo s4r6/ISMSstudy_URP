@@ -6,6 +6,9 @@ using UniRx;
 
 namespace ISMS.Presenter.Detail.Player
 {
+    /// <summary>
+    /// “ü—Í‚ðŽæ“¾‚·‚éƒNƒ‰ƒX
+    /// </summary>
     public class PlayerInputData : MonoBehaviour,IInputProvider
     {
         ReactiveProperty<Vector2> _move = new ReactiveProperty<Vector2>();

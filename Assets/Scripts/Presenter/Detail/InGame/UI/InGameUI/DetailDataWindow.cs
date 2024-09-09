@@ -8,6 +8,9 @@ using System;
 
 namespace ISMS.Presenter.Detail.UI
 {
+    /// <summary>
+    /// オブジェクトの詳細情報を表示するUIの管理を行うクラス
+    /// </summary>
     public class DetailDataWindow : BaseUIWindow
     {
         PlayerInspect _inspect;
@@ -25,13 +28,14 @@ namespace ISMS.Presenter.Detail.UI
         {
             _inspect = _player.GetComponent<PlayerInspect>();
 
-            _input.DiscoverButtonPush
+            _input.DiscoverButtonPush   //リスク発見ボタンが押されたら
                 .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                 .Subscribe(_ =>
                 {
-                    if (_inspect.PreHitObj._riskFlag == CheckFlag.NotSurvey)
+                    if (_inspect.PreHitObj._riskFlag == CheckFlag.NotSurvey)    //調査済みでないオブジェクトなら
                     {
-                        _inspect.PreHitObj.Survey();
+                        //リスク発見状態に移動
+                        _inspect.PreHitObj.Survey();    
                         _state.ChangeCurrentPlayerState(PlayerState.Discover);
                         this.gameObject.SetActive(false);
                     }
@@ -42,9 +46,10 @@ namespace ISMS.Presenter.Detail.UI
             this.gameObject.SetActive(false);
         }
 
-        protected override void DisplayWindow()
+        protected override void DisplayWindow() //詳細情報を設定して段々拡大して表示
         {
             SetDetailData();
+
             this.gameObject.transform.localScale = Vector3.zero;
             this.gameObject.SetActive(true);
 
@@ -56,7 +61,7 @@ namespace ISMS.Presenter.Detail.UI
             BaseSurveyObject ObjData = _inspect.PreHitObj;
             _objNameText.text = ObjData._name;
             _objDescribeText.text = ObjData._describe;
-            switch(ObjData._riskFlag)
+            switch(ObjData._riskFlag)   //調査したオブジェクトのリスクの有無を表示
             {
                 case CheckFlag.NotSurvey:
                     _riskFlagText.text = "?";

@@ -5,6 +5,9 @@ using DG.Tweening;
 
 namespace ISMS.Presenter.Detail
 {
+    /// <summary>
+    /// 説明資料表示UIの左右に表示される▽のアニメーションを設定
+    /// </summary>
     public class DeltaAnimation : MonoBehaviour
     {
         [SerializeField]
@@ -23,7 +26,7 @@ namespace ISMS.Presenter.Detail
         {
             transform.localPosition = startPos;
 
-            anim = this.gameObject.transform.DOLocalMoveX(MoveEndPos, MoveTime)
+            anim = this.gameObject.transform.DOLocalMoveX(MoveEndPos, MoveTime) //左右に動くアニメーション
                 .SetLoops(-1, LoopType.Restart);
         }
 

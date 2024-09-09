@@ -16,7 +16,9 @@ namespace ISMS.Presenter.Detail.Stage
         NotSurvey
     }
 
-
+    /// <summary>
+    /// 調査オブジェクトの元となるクラス
+    /// </summary>
     public abstract class BaseSurveyObject : MonoBehaviour
     {
         public CheckFlag _riskFlag = CheckFlag.NotSurvey;
@@ -29,8 +31,9 @@ namespace ISMS.Presenter.Detail.Stage
         public string _explanation { get; private set; }
         public int _risk { get; private set; }
 
-        void Start()
+        async void  Start()
         {
+            await UniTask.WaitUntil(() => _obj != null);    //オブジェクトの情報がセットされるまで待機
             _name = _obj.ObjName;
             _describe = _obj.ObjDescribe;
             _explanation = _obj.ObjExplanation;

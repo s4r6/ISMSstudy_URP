@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using ISMS.Presenter.Detail;
-using ISMS.Connecter.Detail;
 using ISMS.Presenter;
 using ISMS.Connecter;
 
@@ -18,7 +17,7 @@ namespace ISMS.Matching.Installer
     {
         [SerializeField] RoomView roomView;
         [SerializeField] StageSelectView stageView;
-        WebSocket webSocket = new WebSocket();
+        //WebSocket webSocket = new WebSocket();
 
         public override void InstallBindings()
         {
@@ -26,10 +25,11 @@ namespace ISMS.Matching.Installer
                 .Bind<IMatchingPresenter>()
                 .FromInstance(new RoomPresenter(roomView))
                 .AsCached();
-            Container
+            /*Container
                 .Bind<ISocketConnecter>()
                 .FromInstance(new SocketConnecter(webSocket))
                 .AsCached();
+            */
             Container
                 .Bind<IStagePresenter>()
                 .FromInstance(new StagePresenter(stageView))

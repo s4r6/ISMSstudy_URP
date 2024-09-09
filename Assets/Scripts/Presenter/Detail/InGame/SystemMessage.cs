@@ -7,6 +7,10 @@ using UniRx;
 
 namespace ISMS.Presenter.Detail
 {
+    /// <summary>
+    /// プレイ中に出すメッセージを管理
+    /// 変更容易性を考えメッセージをDictionaryで管理
+    /// </summary>
     public enum SystemCode
     {
         Locked,

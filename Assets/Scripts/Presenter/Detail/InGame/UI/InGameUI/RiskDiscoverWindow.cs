@@ -12,6 +12,9 @@ using UnityEngine.UI;
 
 namespace ISMS.Presenter.Detail.UI
 {
+    /// <summary>
+    /// リスク発見状態になったときに表示されるUIを管理するクラス
+    /// </summary>
     public class RiskDiscoverWindow : BaseUIWindow
     {
 
@@ -34,7 +37,7 @@ namespace ISMS.Presenter.Detail.UI
         GameObject _backGround;
 
 
-        protected override PlayerState myState { get; set; } = PlayerState.Discover;
+        protected override PlayerState myState { get; set; } = PlayerState.Discover;    //自分が表示される状態の設定
 
         const int CORRECT = 0;
         const int INCORRECT = 1;
@@ -46,13 +49,13 @@ namespace ISMS.Presenter.Detail.UI
                 mark.SetActive(false);
             }
 
-            _cutIn.GetComponent<RiskCutIn>().OnEndAnimation
+            _cutIn.GetComponent<RiskCutIn>().OnEndAnimation //カットインアニメーションが終わったら
                 .Subscribe(_ =>
                 {
-                    _backGround.transform.localScale = Vector3.zero;
+                    _backGround.transform.localScale = Vector3.zero;    //解説画面をだんだん拡大しながら表示
                     _backGround.SetActive(true);
 
-                    _backGround.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)
+                    _backGround.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)    
                     .SetEase(Ease.OutCubic);
                 }).AddTo(this);
 
@@ -61,7 +64,7 @@ namespace ISMS.Presenter.Detail.UI
             this.gameObject.SetActive(false);
         }
 
-        void SetRiskData()
+        void SetRiskData()  //表示される前にデータを取得して設定
         {
             BaseSurveyObject ObjData = _inspect.PreHitObj;
             _objNameText.text = ObjData._name;
@@ -79,7 +82,7 @@ namespace ISMS.Presenter.Detail.UI
             }
         }
 
-        protected override async void ExitWindow()
+        protected override async void ExitWindow()  
         {
             if (!_backGround.activeSelf) return;
             await _backGround.transform.DOScale(new Vector3(0, 0, 0), DisplayTime)
@@ -97,6 +100,7 @@ namespace ISMS.Presenter.Detail.UI
                 
         }
 
+        //表示される前にカットインアニメーションを起動
         protected override void DisplayWindow()
         {
             SetRiskData();

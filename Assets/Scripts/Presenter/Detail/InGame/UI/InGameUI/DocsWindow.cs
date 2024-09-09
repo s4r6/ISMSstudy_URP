@@ -8,9 +8,12 @@ using DG.Tweening;
 
 namespace ISMS.Presenter.Detail.UI
 {
+    /// <summary>
+    /// 説明資料表示を管理するUI
+    /// </summary>
     public class DocsWindow : BaseUIWindow
     {
-        protected override PlayerState myState { get; set; } = PlayerState.Document;
+        protected override PlayerState myState { get; set; } = PlayerState.Document;    //自分の表示される状態を設定
 
         [SerializeField]
         GameObject[] PageArray;
@@ -18,14 +21,14 @@ namespace ISMS.Presenter.Detail.UI
 
         protected override void Initialize()
         {
-            _input.RightPageButtonPush
+            _input.RightPageButtonPush  //右ボタンが押されたときに右ページへ移動
                 .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                 .Subscribe(_ =>
                 {
                     RightPageChange();
                 }).AddTo(this);
 
-            _input.LeftPageButtonPush
+            _input.LeftPageButtonPush   //左ボタンが押されたときに左ページへ移動
                 .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                 .Subscribe(_ =>
                 {

@@ -7,6 +7,9 @@ using System;
 
 namespace ISMS.Presenter.Detail.Player
 {
+    /// <summary>
+    /// プレイヤーの移動、カメラ移動を行う
+    /// </summary>
     public class PlayerMove : MonoBehaviour
     {
         [SerializeField]
@@ -50,6 +53,7 @@ namespace ISMS.Presenter.Detail.Player
                 .Subscribe(dir => LookDir = dir)
                 .AddTo(this);
 
+            //探索状態以外では移動不可能に設定
             playerCore.CurrentPlayerState
                 .Subscribe(x =>
                 {
@@ -66,6 +70,7 @@ namespace ISMS.Presenter.Detail.Player
 
         void FixedUpdate()
         {
+            //移動可能状態であれば移動,カメラ回転
             if (!isMovable) return;
             playerController.Move(MoveDirection * speed * Time.deltaTime);
             CameraRotate();
