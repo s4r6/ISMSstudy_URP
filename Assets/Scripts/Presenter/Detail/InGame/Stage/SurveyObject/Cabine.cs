@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ISMS.Presenter.Detail.Stage
 {
+    /// <summary>
+    /// 引き出しのアニメーションや、開いている閉まっているなどの状態を管理
+    /// </summary>
     public class Cabine : MonoBehaviour, IActionable
     {
 
