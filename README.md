@@ -4,8 +4,7 @@
 現在は先輩のコードをほとんど独自のコードに書き換え、設計を意識した開発を行っています。  
 ゲームのメインのスクリプトはScripts/Presenter/Detail/InGameにあります。  
 書き換え前のコードや、以前まで使用していたコードはOldの中にあります。  
-開発中のシーンは  
-Scenes/Stage/Stage1です。
+開発中のシーンはScenes/Stage/Stage1です。
 
 # 使用アセット
 Zenject  
