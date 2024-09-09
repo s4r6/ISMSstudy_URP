@@ -13,14 +13,14 @@ namespace ISMS.Presenter.Detail.Stage
         [SerializeField]
         PlayerCore _playerCore;
 
-        async void Awake()
+        void Awake()
         {
-            await _objManager.Initialize();
+            //await _objManager.Initialize();
         }
 
         void Start()
         {
-            _playerCore.ChangeCurrentPlayerState(PlayerState.Wait);    
+            //_playerCore.ChangeCurrentPlayerState(PlayerState.Wait);    
         }
 
     }

@@ -9,6 +9,10 @@ using UniRx;
 
 namespace ISMS.Presenter.Detail.Stage
 {
+    /// <summary>
+    /// ステージデータを各オブジェクトに設定
+    /// 子オブジェクトのBaseSurveyObjectクラスに各値を設定
+    /// </summary>
     public class SurveyObjectManager : MonoBehaviour
     {
         [SerializeField]
@@ -22,7 +26,7 @@ namespace ISMS.Presenter.Detail.Stage
         [Inject]
         IRepository _stageDataLoader;
 
-        public async UniTask Initialize()
+        async void Start()
         {
             await _stageDataLoader.GetStageData();  //データをダウンロード
             var parent = this.transform;
@@ -31,6 +35,7 @@ namespace ISMS.Presenter.Detail.Stage
             {
                 var _surveyObj = child.gameObject.GetComponent<BaseSurveyObject>();
                 _surveyObj._obj = _objDic.GetObject(_surveyObj.name);   //各オブジェクトのデータを取得してセット
+                Debug.Log(_surveyObj._obj);
                 _surveyObj.CorrectFlag
                     .SkipLatestValueOnSubscribe()   //登録した時の初期値のPushを無視
                     .Subscribe(async x =>
@@ -41,8 +46,8 @@ namespace ISMS.Presenter.Detail.Stage
                             if (DengerObjNum == 0)
                             {
                                 Debug.Log("終了");
-                                await UniTask.WaitUntil(() => _player.CurrentPlayerState.Value == PlayerState.Explore);
-                                _player.ChangeCurrentPlayerState(PlayerState.Result);
+                                await UniTask.WaitUntil(() => _player.CurrentPlayerState.Value == PlayerState.Explore);     //リスク発見状態が終了して探索ステートに戻った時に
+                                _player.ChangeCurrentPlayerState(PlayerState.Result);   //リザルト表示
                             }
                         }
                         else
@@ -52,6 +57,7 @@ namespace ISMS.Presenter.Detail.Stage
                     }).AddTo(this);
             }
             DengerObjNum = _objDic.GetDengerObjNum();   //危険なオブジェクトの数を取得
+            _player.ChangeCurrentPlayerState(PlayerState.Wait);
         }
     }
 }

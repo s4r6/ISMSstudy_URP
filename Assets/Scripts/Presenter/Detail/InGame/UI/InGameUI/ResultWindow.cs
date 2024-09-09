@@ -6,39 +6,31 @@ using ISMS.Presenter.Detail.Player;
 using TMPro;
 namespace ISMS.Presenter.Detail.UI
 {
-    public class ResultWindow : MonoBehaviour
+    /// <summary>
+    /// リザルトUIを管理するクラス
+    /// </summary>
+    public class ResultWindow : BaseUIWindow
     {
+
+        protected override PlayerState myState { get; set; } = PlayerState.Result;
         [SerializeField]
         TextMeshProUGUI InCorrectCountText;
         [SerializeField]
         TextMeshProUGUI ClearTime;
-        [SerializeField]
-        PlayerCore _state;
 
-        void Start()
+        protected override void Initialize()
         {
-            _state.CurrentPlayerState
-                .Subscribe(x =>
-                {
-                    if(x == PlayerState.Result)
-                    {
-                        SetResultData();
-                        DisplayWindow();
-                    }
-                    
-                }).AddTo(this);
-
             this.gameObject.SetActive(false);
         }
-
-        void SetResultData()
+        void SetResultData()    //結果表示
         {
             InCorrectCountText.text = _state.InCorrectCount.ToString();
         }
 
-        void DisplayWindow()
+        protected override void DisplayWindow()
         {
-            this.gameObject.SetActive(true);
+            SetResultData();
+            DisplayWindow();
         }
 
     }

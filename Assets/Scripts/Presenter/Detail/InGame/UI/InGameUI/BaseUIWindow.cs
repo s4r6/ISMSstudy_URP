@@ -8,6 +8,10 @@ using Cysharp.Threading.Tasks;
 
 namespace ISMS.Presenter.Detail.UI
 {
+    /// <summary>
+    /// UIの元となるクラス
+    /// 各状態に表示されるUIはこのクラスを継承する
+    /// </summary>
     public abstract class BaseUIWindow : MonoBehaviour
     {
         [SerializeField]
@@ -18,21 +22,21 @@ namespace ISMS.Presenter.Detail.UI
         [SerializeField]
         protected float DisplayTime = 0.2f;    //表示までの時間
 
-        protected abstract PlayerState myState { get; set; }
+        protected abstract PlayerState myState { get; set; }    //自分が表示される状態を設定
 
         void Start()
         {
             _state = _player.GetComponent<PlayerCore>();
             _input = _player.GetComponent<IInputProvider>();
 
-            _state.CurrentPlayerState
+            _state.CurrentPlayerState   //状態がmyStateになったらWindow表示
                 .Where(x => x == myState)
                 .Subscribe(x =>
                 {
                    DisplayWindow();
                 }).AddTo(this);
 
-            _input.BackButtonPush
+            _input.BackButtonPush   //myState状態の時に戻る入力がされたらWindowを閉じる
                  .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                  .Subscribe(_ =>
                  {

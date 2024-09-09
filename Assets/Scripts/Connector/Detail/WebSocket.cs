@@ -7,7 +7,7 @@ using ISMS.Connecter;
 using UniRx;
 namespace ISMS.Connecter.Detail
 {
-    public class WebSocket :IWebSocket
+    /*public class WebSocket :IWebSocket
     {
         //[DllImport("__Internal")]
         //private static extern void Jslib_InitializeWebSocket(OnOpen onOpen, OnMessage onMessage, Connecting Connecting, SetRoomInfo SetRoomInfoFunc, JoinClient JoinClientFunc);
@@ -56,21 +56,21 @@ namespace ISMS.Connecter.Detail
             #endregion
 #endif
 
-            /*udpClient = new UdpClient(9000);    //9000番ポートを送受信ポートとして解放
+            udpClient = new UdpClient(9000);    //9000番ポートを送受信ポートとして解放
             udpClient.BeginReceive(OnReceived, udpClient);    //受信を開始
-            */
-            /*subject
+            
+            subject
                 .ObserveOnMainThread()
                 .Subscribe(msg => {
                     message.text = msg;
-                }).AddTo(this);*/
+                }).AddTo(this);
             Debug.Log("Insutans");
         }
 
-        /*public void StartCreateRoomCoroutine()
+        public void StartCreateRoomCoroutine()
         {
             //StartCoroutine(CreateRoom());
-        }*/
+        }
 
         public void Connect()
         {
@@ -86,7 +86,7 @@ namespace ISMS.Connecter.Detail
 
         }
 
-        /*private IEnumerator CreateRoom()    //部屋作成要求を送信
+        private IEnumerator CreateRoom()    //部屋作成要求を送信
         {
             Jslib_ConnectWebSocket();   //接続処理
             //yield return new WaitUntil(() => ConnectEndFlag == true);   //接続されるまで待機
@@ -96,7 +96,7 @@ namespace ISMS.Connecter.Detail
             PlayerData.M_Authority = PlayerAuthority.RoomHost;
             SceneManager.LoadScene("VRMainHTC_harf");
 
-        }*/
+        }
 
         public void SendSelectRoom(int RoomID)  //参加する部屋を送信
         {
@@ -124,7 +124,7 @@ namespace ISMS.Connecter.Detail
 #endif
         }
 
-        /*
+        
         public void SendStageData()
         {
             StageDataPakcet stagepacket = new StageDataPakcet();
@@ -173,9 +173,9 @@ namespace ISMS.Connecter.Detail
             Debug.Log(json);
             return json;
         }
-        */
+        
         private delegate void OnOpen();
-        /*
+        
         private delegate void OnMessage(IntPtr ptr, int size);
 
         private delegate void Connecting();
@@ -190,7 +190,7 @@ namespace ISMS.Connecter.Detail
             StageData.StageID = _stageID;
             SceneManager.LoadScene("VRMainHTC_harf");
         }
-        */
+        
 
         [MonoPInvokeCallback(typeof(OnOpen))]
         private static void OnOpenFunc()
@@ -199,7 +199,7 @@ namespace ISMS.Connecter.Detail
             //MyState.Value
             //Debug.Log("Connected");
         }
-        /*
+        
         [MonoPInvokeCallback(typeof(OnMessage))]
         private static void OnMessageFunc(IntPtr ptr, int size)
         {
@@ -224,7 +224,7 @@ namespace ISMS.Connecter.Detail
             RoomData.SetRoomInfo(RoomID, PlayerNum);
             //instance.Finish_GetRoomInfo.Value = true;
         }
-    }*/
-}
+    }
+}*/
 }
 
