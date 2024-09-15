@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RootObj
+  - SurveyObj
+  - ChildGimicSurveyObj
+  - UnSuvey
+  - GimicSurveyObj
+  - RootSurveyObj
+  - Interactable
   layers:
   - Default
   - TransparentFX

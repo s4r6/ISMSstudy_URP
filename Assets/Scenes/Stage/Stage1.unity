@@ -12647,9 +12647,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f7107faf48ce84a94d7cf5aec5922d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 344349635}
+  DisplayTime: 0.2
   InCorrectCountText: {fileID: 693268376}
   ClearTime: {fileID: 547793433}
-  _state: {fileID: 344349646}
 --- !u!1 &492291051
 GameObject:
   m_ObjectHideFlags: 0
@@ -19082,8 +19083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46af409f60d96dd4c8d72f882369a39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objManager: {fileID: 492291053}
-  _playerCore: {fileID: 344349646}
 --- !u!1 &779655806
 GameObject:
   m_ObjectHideFlags: 0

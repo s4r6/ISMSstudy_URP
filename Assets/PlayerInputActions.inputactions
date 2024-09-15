@@ -305,6 +305,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f82420ad-2060-456f-9ca8-2006494c72ed",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
@@ -404,6 +415,17 @@
                 },
                 {
                     "name": "",
+                    "id": "311cbc4c-a62a-467f-9d4d-92d3fbdfbd89",
+                    "path": "<XRController>{RightHand}/{Secondary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b54cdcf6-46e6-4cb6-a70a-6249e5661ed0",
                     "path": "<DualShockGamepad>/buttonEast",
                     "interactions": "",
@@ -439,6 +461,17 @@
                     "name": "",
                     "id": "5a36b49f-da3b-4795-9236-204c24d27d0f",
                     "path": "<WebGLGamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decision",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c2c9a1a-814b-4b27-baa9-c7006b387c2e",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -492,6 +525,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2e8149fd-690c-477e-b0c6-e2fc3bf7c0bb",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "08a6dbca-86f0-4b26-b4b6-96b1d0a201ea",
                     "path": "<DualShockGamepad>/buttonWest",
                     "interactions": "",
@@ -536,6 +580,17 @@
                 },
                 {
                     "name": "",
+                    "id": "0e56fb4d-ea4f-44cf-88b2-0a9435a4087c",
+                    "path": "<XRController>{RightHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Risk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d9c393d2-2f89-4230-aa77-f13dea56de5d",
                     "path": "<DualShockGamepad>/buttonNorth",
                     "interactions": "",
@@ -574,6 +629,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Gimic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac1de047-601a-4231-bd29-45b6ba9b37a5",
+                    "path": "<XRController>{RightHand}/{SecondaryTrigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
                     "action": "Gimic",
                     "isComposite": false,
                     "isPartOfComposite": false
