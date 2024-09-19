@@ -22,3 +22,4 @@ EditorBuildSettings:
     WebXR.Settings: {fileID: 11400000, guid: 7f1402f94045b214da19c73579f5c45f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: f128ed6269cea044eb0e4208b2c829a8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4d2f6e3939c3dcf4582bba335ecff841, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: dd40141ec3b449347aff38dba5a9a8ce, type: 2}
