@@ -36,6 +36,6 @@ DOTween
 ![ISMS NewClass](https://github.com/user-attachments/assets/2e86ae1a-d3df-48dc-adff-291305af7d60)
 
 # 成果物に対する評価
-・自身
+・自身  
 SOLID原則を意識した開発を行っており、この開発を行う前に比べて設計に対する意識が大幅に改善されたと感じています。  
 しかし、InputSystemやUIのシステムなどの理解が浅い部分や、適切な実装ができていないと感じる部分があるため、今後修正を行っていきたいと考えています。
