@@ -55,8 +55,9 @@ namespace ISMS.Presenter.Detail.UI
                     _backGround.transform.localScale = Vector3.zero;    //‰ðà‰æ–Ê‚ð‚¾‚ñ‚¾‚ñŠg‘å‚µ‚È‚ª‚ç•\Ž¦
                     _backGround.SetActive(true);
 
-                    _backGround.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)    
-                    .SetEase(Ease.OutCubic);
+                    _backGround.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)
+                    .SetEase(Ease.OutCubic)
+                    .OnComplete(() => InputEnable = true);
                 }).AddTo(this);
 
             _backGround.SetActive(false);

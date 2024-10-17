@@ -32,10 +32,20 @@ namespace ISMS.Presenter.Detail.Player
         float MaxLimit = 70.0f;     //ècâÒì]Å´ï˚å¸ÇÃêßå¿
 
         Vector2 LookDir;
+        float _cameraTargetPitch;
 
         bool isMovable = true;
 
         IInputProvider _input;
+
+        [SerializeField]
+        GameObject CinemachineCameraTarget;
+
+        float _cinemachineTargetPitch;
+        float _speed;
+        float _rotationVelocity;
+        float _verticalVelocity;
+        float _terminalVelocity;
 
         void Awake()
         {
@@ -50,6 +60,7 @@ namespace ISMS.Presenter.Detail.Player
                 .AddTo(this);
 
             _input.LookDirection
+                .Where(_ => isMovable)
                 .Subscribe(dir => LookDir = dir)
                 .AddTo(this);
 
@@ -63,6 +74,7 @@ namespace ISMS.Presenter.Detail.Player
                     }
                     else
                     {
+                        LookDir = Vector2.zero;
                         isMovable = false;
                     }
                 }).AddTo(this);
@@ -73,16 +85,37 @@ namespace ISMS.Presenter.Detail.Player
             //à⁄ìÆâ¬î\èÛë‘Ç≈Ç†ÇÍÇŒà⁄ìÆ,ÉJÉÅÉââÒì]
             if (!isMovable) return;
             playerController.Move(MoveDirection * speed * Time.deltaTime);
+            
+        }
+
+        void LateUpdate()
+        {
             CameraRotate();
         }
 
         void CameraRotate()
         {
-            float turn = LookDir.x * turnSpeed * Time.deltaTime;
+            _cinemachineTargetPitch += LookDir.y * turnSpeed * Time.deltaTime;
+            _rotationVelocity = LookDir.x * turnSpeed * Time.deltaTime;
+
+            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, MinLimit, MaxLimit);
+
+            CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
+            transform.Rotate(Vector3.up * _rotationVelocity);
+            /*float turn = LookDir.x * turnSpeed * Time.deltaTime;
             this.gameObject.transform.Rotate(0, turn, 0);
             vertiRotate += -LookDir.y * turnSpeed * Time.deltaTime;
             vertiRotate = Mathf.Clamp(vertiRotate, MinLimit, MaxLimit);
             WebCameraSet.localEulerAngles = new Vector3(vertiRotate, 0.0f, 0.0f);
+            */
+            }
+
+        float ClampAngle(float lfAngle, float lfMin, float lfMax)
+        {
+            if (lfAngle < -360f) lfAngle += 360f;
+            if (lfAngle > 360f) lfAngle -= 360f;
+            return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
 
         void MoveProcess(Vector2 MoveDir)

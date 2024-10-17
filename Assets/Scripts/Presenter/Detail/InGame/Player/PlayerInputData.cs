@@ -11,6 +11,11 @@ namespace ISMS.Presenter.Detail.Player
     /// </summary>
     public class PlayerInputData : MonoBehaviour,IInputProvider
     {
+
+        [Header("Mouse Cursor Settings")]
+        public bool cursorLocked = true;
+        public bool cursorInputForLook = true;
+
         ReactiveProperty<Vector2> _move = new ReactiveProperty<Vector2>();
         ReactiveProperty<Vector2> _look = new ReactiveProperty<Vector2>();
         ReactiveProperty<bool> _any = new BoolReactiveProperty();
@@ -40,7 +45,23 @@ namespace ISMS.Presenter.Detail.Player
 
         public void OnLook(InputAction.CallbackContext context)
         {
+            //Debug.Log(context.Get<Vector2>());
             _look.Value = context.ReadValue<Vector2>();
+        }
+
+        public void OnLook(InputValue value)
+        {
+            Debug.Log(value.Get<Vector2>());
+        }
+
+        void OnApplicationFocus(bool hasFocus)
+        {
+            SetCursorState(cursorLocked);
+        }
+
+        void SetCursorState(bool newState)
+        {
+            Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
         }
 
         public void OnAny(InputAction.CallbackContext context)

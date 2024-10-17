@@ -428,22 +428,22 @@ namespace ISMS.Presenter.Detail
                 },
                 {
                     ""name"": """",
-                    ""id"": ""16a49a02-995a-4bee-a886-f5ea1b4f3563"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""id"": ""311cbc4c-a62a-467f-9d4d-92d3fbdfbd89"",
+                    ""path"": ""<XRController>{RightHand}/{Secondary2DAxis}"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""XR"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""311cbc4c-a62a-467f-9d4d-92d3fbdfbd89"",
-                    ""path"": ""<XRController>{RightHand}/{Secondary2DAxis}"",
+                    ""id"": ""431ac02b-83f2-488e-949c-0c5300689e4e"",
+                    ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
+                    ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=0.07,y=0.07)"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -496,6 +496,17 @@ namespace ISMS.Presenter.Detail
                     ""name"": """",
                     ""id"": ""2c2c9a1a-814b-4b27-baa9-c7006b387c2e"",
                     ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Decision"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5becdcd6-ce75-4fbc-a560-c961369a6692"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -560,6 +571,17 @@ namespace ISMS.Presenter.Detail
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5e28768d-a57e-47e2-bda3-741bb01600b0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""08a6dbca-86f0-4b26-b4b6-96b1d0a201ea"",
                     ""path"": ""<DualShockGamepad>/buttonWest"",
                     ""interactions"": """",
@@ -615,6 +637,17 @@ namespace ISMS.Presenter.Detail
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c954af45-1dae-4cc3-8f7f-181ba66b6eb7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Risk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d9c393d2-2f89-4230-aa77-f13dea56de5d"",
                     ""path"": ""<DualShockGamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -664,6 +697,17 @@ namespace ISMS.Presenter.Detail
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
+                    ""action"": ""Gimic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""988cd8fc-79ea-4716-8038-0da9785980b5"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Gimic"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
