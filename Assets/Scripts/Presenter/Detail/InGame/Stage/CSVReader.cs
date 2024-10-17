@@ -100,7 +100,6 @@ namespace ISMS.Presenter.Detail.Stage
                 var risk = int.Parse(data[2]);
 
                 ISMS.Data.Object _obj = new ISMS.Data.Object(system, obj, describe, explanation, risk);
-                Debug.Log(_obj);
                 _objDictionary.AddObject(system, _obj);
             }
         }

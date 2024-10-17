@@ -29,6 +29,7 @@ namespace ISMS.Presenter.Detail.UI
             _inspect = _player.GetComponent<PlayerInspect>();
 
             _input.DiscoverButtonPush   //リスク発見ボタンが押されたら
+                .Where(_ => InputEnable)
                 .Where(x => x == true && _state.CurrentPlayerState.Value == myState)
                 .Subscribe(_ =>
                 {
@@ -48,13 +49,15 @@ namespace ISMS.Presenter.Detail.UI
 
         protected override void DisplayWindow() //詳細情報を設定して段々拡大して表示
         {
+            Debug.Log(InputEnable);
             SetDetailData();
 
             this.gameObject.transform.localScale = Vector3.zero;
             this.gameObject.SetActive(true);
 
             this.gameObject.transform.DOScale(new Vector3(1, 1, 1), DisplayTime)
-                .SetEase(Ease.OutCubic);
+                .SetEase(Ease.OutCubic)
+                .OnComplete(() => InputEnable = true);
         }
         void SetDetailData()
         {

@@ -30,7 +30,7 @@ namespace ISMS.Presenter.Detail.UI
         protected override void DisplayWindow()
         {
             SetResultData();
-            DisplayWindow();
+            this.gameObject.SetActive(true);
         }
 
     }
